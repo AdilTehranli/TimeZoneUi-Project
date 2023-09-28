@@ -1,0 +1,33 @@
+.navbar {
+    .navbar__all {
+      display: flex;
+      justify-content: space-between;
+        width: 100%;
+        margin-top: 40px;
+      .navbar__logo {
+      }
+  
+      .navbar__orderlist {
+        ul {
+          display: flex;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          gap: 30px;
+          font-family: "Josefin Sans",sans-serif;
+          li {
+              margin-right: 10px; 
+              &:hover{
+                color: red;
+                cursor: pointer;
+              }
+          }
+        }
+      }
+      .navbar__icons{
+        display: flex;
+        gap: 30px;
+      }
+    }
+  }
+  
