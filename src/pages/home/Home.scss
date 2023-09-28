@@ -108,7 +108,34 @@
       }
     }
   }
-  .video{
-margin-top: 160px;
+  .video {
+    margin-top: 160px;
+  }
+  .choise {
+    margin-top: 140px;
+    .choise__right {
+      margin-top: 145px;
+      h2 {
+        font-size: 60px;
+        font-weight: 700;
+      }
+      p {
+        color: #777;
+        margin-top: 45px;
+        font-weight: 600;
+      }
+      button {
+        margin-top: 30px;
+        background-color: red;
+        color: white;
+        border: none;
+        height: 55px;
+        width: 185px;
+        font-weight: 600;
+      }
+    }
+    .choise__left{
+      margin-top: 30px;
+    }
   }
 }

@@ -7,6 +7,7 @@ import "aos/dist/aos.css";
 import { DefaultPlayer as Video } from "react-html5video";
 import "react-html5video/dist/styles.css";
 import video from "../../assets/videos/Rolex Glidelock – Take it up a notch.mp4";
+import Wrapper from "../../components/wrapper/Wrapper";
 AOS.init();
 const contentStyle = {};
 const Home = () => {
@@ -150,10 +151,42 @@ const Home = () => {
       </div>
 
       <div className="video">
-        <Video autoPlay loop>
+        <Video >
           <source src={video} type="video/webm" />
         </Video>
       </div>
+      <div className="choise">
+        <div className="container">
+          <div className="row">
+            <div className="choise__right col-6">
+              <h2>Watch of Choice</h2>
+              <p>
+                Enim ad minim veniam, quis nostrud exercitation ullamco <br /> laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute <br /> irure dolor
+                in reprehenderit in voluptate velit esse.
+              </p>
+              <button>SHOW WATCHES</button>
+            </div>
+            <div className="choise__left col-6">
+              <img src="	https://themewagon.github.io/timezone/assets/img/gallery/choce_watch1.png" alt="" />
+            </div>
+            
+            <div className="choise__left col-6">
+              <img src="	https://themewagon.github.io/timezone/assets/img/gallery/choce_watch1.png" alt="" />
+            </div>
+            <div className="choise__right col-6">
+              <h2>Watch of Choice</h2>
+              <p>
+                Enim ad minim veniam, quis nostrud exercitation ullamco <br /> laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute <br /> irure dolor
+                in reprehenderit in voluptate velit esse.
+              </p>
+              <button>SHOW WATCHES</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Wrapper/>
     </div>
   );
 };
