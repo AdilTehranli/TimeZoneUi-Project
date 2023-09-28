@@ -1,0 +1,80 @@
+.section {
+  .slider {
+    margin-top: 35px;
+    background-color: #f0f0f2;
+    .slider__all {
+      .slider__title {
+        h1 {
+          color: #0b1c39;
+          font-size: 95px;
+          font-weight: 700;
+          margin-top: 295px;
+        }
+        p {
+          margin-top: 40px;
+          font-size: 15px;
+          font-weight: 600;
+        }
+        button {
+          margin-top: 50px;
+          color: white;
+          background-color: #4a4a4b;
+          border: none;
+          height: 50px;
+          width: 145px;
+          font-size: 20px;
+          font-weight: 600;
+        }
+      }
+      .slider__image {
+      }
+    }
+  }
+  .arrivals {
+    margin-top: 165px;
+    .arrivals__title {
+        h2{
+            font-size: 45px;
+            font-weight: 700;
+            margin-left: 35px;
+        }
+    }
+    .arrivals__products {
+        margin-top: 65px;
+      .arrivals__product {
+        text-align: center;
+        h3 {
+          margin-top: 30px;
+          color: #444444;
+          font-weight: 600;
+        }
+        p {
+          color: red;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+ .gallery{
+    margin-top: 145px;
+    .gallery__image__left{
+        img{
+            width: 734px;
+        }
+    }
+    .gallery__image__right{
+        .gallery__image__right__middle{
+            width: 320px;
+            height: 413px;
+            &:hover{
+                -webkit-transform: scale(1);
+	transform: scale(1);
+            }
+        }
+        .gallery__image__right__end{
+            margin-left: 27px;
+            width: 412px;
+        }
+    }
+ } 
+}
