@@ -33,14 +33,14 @@
   .arrivals {
     margin-top: 165px;
     .arrivals__title {
-        h2{
-            font-size: 45px;
-            font-weight: 700;
-            margin-left: 35px;
-        }
+      h2 {
+        font-size: 45px;
+        font-weight: 700;
+        margin-left: 35px;
+      }
     }
     .arrivals__products {
-        margin-top: 65px;
+      margin-top: 65px;
       .arrivals__product {
         text-align: center;
         h3 {
@@ -55,39 +55,60 @@
       }
     }
   }
- .gallery{
+  .gallery {
     margin-top: 145px;
-    .gallery__image__left{
-        img{
-            width: 734px;
-        }
+    .gallery__image__left {
+      img {
+        width: 734px;
+      }
     }
-    .gallery__image__right{
-        .gallery__image__right__middle{
-            width: 320px;
-            height: 413px;
-            &:hover{
-                -webkit-transform: scale(1);
-	transform: scale(1);
-            }
+    .gallery__image__right {
+      .gallery__image__right__middle {
+        width: 320px;
+        height: 413px;
+        &:hover {
+          -webkit-transform: scale(1);
+          transform: scale(1);
         }
-        .gallery__image__right__end{
-            margin-left: 27px;
-            width: 412px;
-        }
+      }
+      .gallery__image__right__end {
+        margin-left: 27px;
+        width: 412px;
+      }
     }
- } 
- .items{
+  }
+  .items {
     margin-top: 195px;
-    .item__title{
-        text-align: center;
-        h3{
-            font-weight: 700;
-            font-size: 50px;
-        }
-        p{
-            color: #777;
-        }
+    .items__title {
+      text-align: center;
+      h3 {
+        font-weight: 700;
+        font-size: 50px;
+      }
+      p {
+        color: #777;
+      }
     }
- }
+    .items__btn {
+      text-align: center;
+      margin-top: 110px;
+      button {
+        background-color: red;
+        color: white;
+        border: none;
+        width: 260px;
+        height: 55px;
+        font-weight: 700;
+        transition: 0.5s;
+
+        &:hover {
+          background-color: #444444;
+          transition: 0.5s;
+        }
+      }
+    }
+  }
+  .video{
+margin-top: 160px;
+  }
 }
