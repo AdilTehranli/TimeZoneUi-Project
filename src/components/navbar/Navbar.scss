@@ -26,10 +26,40 @@
           }
         }
       }
-      .navbar__icons{
+      .navbar__icons {
         display: flex;
         gap: 30px;
+      
+        .navbar__user__hover {
+          display: none;
+          position: absolute;
+          background-color: white;
+          margin-top: 16px;
+          margin-left: 15px;
+          padding: 10px;
+          border-radius: 5px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          pointer-events: none;
+          transition: opacity 0.3s ease-in-out;
+          z-index: 1;
+          opacity: 0; /* Opacity set to 0 by default */
+      
+        
+        }
+      
+        .user {
+          cursor: pointer;
+          position: relative;
+      
+          &:hover + .navbar__user__hover {
+            display: block;
+            opacity: 1; /* Show the hover content */
+          }
+        }
       }
+      
+      
+      
       .bar{
         display: none;
       }

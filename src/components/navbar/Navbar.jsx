@@ -2,6 +2,7 @@ import React from "react";
 import "../navbar/Navbar.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const Navbar = () => {
   return (
@@ -24,11 +25,18 @@ const Navbar = () => {
                 <li><Link to='/contact'>Contact</Link></li>
               </ul>
             </div>
-            <div className="navbar__icons">
-              <i className="fa-solid fa-magnifying-glass"></i>
-              <i className="fa-regular fa-user"></i>
-              <i className="fa-solid fa-basket-shopping"></i>
-            </div>
+              <div className="navbar__icons">
+                <i className="fa-solid fa-magnifying-glass"></i>
+                <Link to="/login">
+                <i className="user fa-regular fa-user"></i>
+                </Link>
+                <div className="navbar__user__hover">
+                  <p>Register</p>
+                  <p>Login</p>
+                </div>
+                <i className="fa-solid fa-basket-shopping"></i>
+                <AiOutlineHeart/>
+              </div>
             <div className="bar">
             <i class="fa-solid fa-bars"></i>
             </div>

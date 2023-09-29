@@ -6,6 +6,7 @@ import Shop from "./pages/shop/Shop";
 import About from "./pages/about/About";
 import ProductDetails from "./pages/productdetails/ProductDetails";
 import Contact from "./pages/contact/Contact";
+import Login from "./pages/login/Login";
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,7 @@ function App() {
 <Route path="/about" element={<About/>}/>
 <Route path="/productdetail/:id" element={<ProductDetails/>}/>
 <Route path="/contact" element={<Contact/>}/>
+<Route path="/login" element={<Login/>}/>
 
    </Routes>
    <Footer/>

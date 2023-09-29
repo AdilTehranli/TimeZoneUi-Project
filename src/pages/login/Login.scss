@@ -1,0 +1,27 @@
+.login{
+    .login__title{
+        margin-top: 80px;
+        .login__input__text{
+            display: flex;
+            width: 350px;
+            justify-content: center;
+            align-items: center;
+            margin:auto
+        }
+        button{
+            color: #2577fd;
+            background-color: white;
+            border-color: #2577fd;
+            width: 355px;
+            border-radius: 13px;
+            height: 64px;
+            transition: 0.3s;
+
+            &:hover{
+                background-color: #2577fd;
+                color: white;
+                transition: 0.3s;
+            }
+        }
+    }
+}
