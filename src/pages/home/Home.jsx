@@ -16,14 +16,14 @@ const Home = () => {
   };
   return (
     <div className="section">
-      <div className="slider ">
+      <div className="sliders ">
         <div className="container">
           <Carousel afterChange={onChange}>
             <div>
               <h3 style={contentStyle}>
                 <div className="slider__all d-flex">
                   <div className="slider__title">
-                    <div data-aos="fade-right">
+                    <div  data-aos="fade-right">
                       <h1>Select Your New Perfect Style</h1>
                       <p>
                         Ut enim ad minim veniam, quis nostrud exercitation
@@ -114,7 +114,7 @@ const Home = () => {
       </div>
       <div className="gallery d-flex">
         <div className="gallery__image__left col-6">
-          <img
+          <img className="left"
             src="https://qph.cf2.quoracdn.net/main-qimg-cbb5dff8c6b239a3caf0c2db6f23e326-lq"
             alt=""
           />

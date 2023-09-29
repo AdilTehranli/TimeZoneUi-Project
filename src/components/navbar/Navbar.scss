@@ -30,6 +30,17 @@
         display: flex;
         gap: 30px;
       }
+      .bar{
+        display: none;
+      }
     }
   }
-  
+
+  @media screen and (max-width: 768px) {
+    .navbar__orderlist{
+      display: none;
+    }
+    .bar{
+      display: block;
+    }
+  }

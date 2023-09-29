@@ -1,5 +1,5 @@
 .section {
-  .slider {
+  .sliders {
     margin-top: 35px;
     background-color: #f0f0f2;
     .slider__all {
@@ -136,6 +136,52 @@
     }
     .choise__left{
       margin-top: 30px;
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .slider__all
+  {
+
+    .slider__title{
+      
+      h1{
+        font-size: 10px;
+      }
+    }
+    
+    .slider__image{
+      width: 400px;
+    }
+  }
+ }
+ @media screen and (max-width: 960px) {
+  .arrivals{
+    .arrivals__products{
+      flex-direction: column;
+    }
+  }
+  .gallery{
+    flex-direction: column;
+    .gallery__image__left{
+     .left{
+      width: 200px;
+     }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .arrivals{
+    .arrivals__products{
+      flex-direction: column;
+    }
+  }
+  .gallery{
+    flex-direction: column;
+    .gallery__image__left{
+     .left{
+      width: 200px;
+     }
     }
   }
 }

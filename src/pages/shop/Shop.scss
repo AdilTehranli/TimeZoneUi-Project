@@ -1,0 +1,13 @@
+.sort{
+    margin-top: 110px;
+    .row{
+        .sort__orders{
+           .sort__orders__ul{
+            gap: 35px;
+            li{
+                list-style: none;
+            }
+           }
+        }
+    }
+}

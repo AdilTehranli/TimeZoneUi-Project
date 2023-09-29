@@ -1,6 +1,7 @@
 import React from "react";
 import "../navbar/Navbar.scss";
 import "bootstrap/dist/css/bootstrap.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -16,9 +17,9 @@ const Navbar = () => {
             </div>
             <div className="navbar__orderlist">
               <ul>
-                <li>Home</li>
-                <li>Shop</li>
-                <li>About</li>
+                <li><Link to='/'>Home</Link> </li>
+                <li><Link to='/shop'>Shop</Link> </li>
+                <li><Link to='/about'>About</Link> </li>
                 <li>Blog</li>
                 <li>Contact</li>
               </ul>
@@ -27,6 +28,9 @@ const Navbar = () => {
               <i className="fa-solid fa-magnifying-glass"></i>
               <i className="fa-regular fa-user"></i>
               <i className="fa-solid fa-basket-shopping"></i>
+            </div>
+            <div className="bar">
+            <i class="fa-solid fa-bars"></i>
             </div>
           </div>
         </div>

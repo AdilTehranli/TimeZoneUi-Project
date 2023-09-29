@@ -1,0 +1,22 @@
+.slider{
+    margin-top: 45px;
+    background-image: url(https://themewagon.github.io/timezone/assets/img/hero/about_hero.png);
+    background-repeat: no-repeat;
+    .slider__text{
+        text-align: center;
+        padding: 223px;
+        h2{
+            font-size: 75px;
+            font-weight: 700;
+        }
+    }
+}
+@media screen and (max-width: 768px){
+    .slider{
+        .slider__text{
+            h2{
+                font-size: 45px;
+            }
+        }
+    }
+}
