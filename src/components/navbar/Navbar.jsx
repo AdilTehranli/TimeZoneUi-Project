@@ -20,8 +20,8 @@ const Navbar = () => {
                 <li><Link to='/'>Home</Link> </li>
                 <li><Link to='/shop'>Shop</Link> </li>
                 <li><Link to='/about'>About</Link> </li>
-                <li>Blog</li>
-                <li>Contact</li>
+                <li>Blog  </li>
+                <li><Link to='/contact'>Contact</Link></li>
               </ul>
             </div>
             <div className="navbar__icons">

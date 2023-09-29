@@ -1,5 +1,6 @@
 import React from 'react'
 import '../products/Products.scss';
+import { Link } from 'react-router-dom';
 const Products = () => {
   return (
     <div className='products' >
@@ -8,7 +9,9 @@ const Products = () => {
 
                 <div className="products__item col-4">
                     <div className="products__item__image">
+                        <Link className='ss' to={`/productdetails`}>
                         <img src="https://themewagon.github.io/timezone/assets/img/gallery/popular1.png" alt="" />
+                        </Link>
                         <div className="products__item__image__icon">
                         <i class="fa-regular fa-heart"></i>
                         </div>
