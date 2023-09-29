@@ -1,0 +1,29 @@
+.about {
+    .about__title {
+      margin-top: 70px;
+      position: relative; 
+      margin-bottom: 160px;
+      
+      h3 {
+        margin-left: 10px;
+        position: relative; 
+        font-weight: 700;
+        span {
+          border: 1px solid #eb566c;
+          position: absolute; 
+          top: 50%; 
+          transform: translateY(-50%); 
+          height: 100%; 
+          left: -10px; 
+        }
+      }
+      .about__desc {
+        margin-top: 40px;
+        color: #464d65;
+      }
+      p {
+        color: #464d65;
+      }
+    }
+  }
+  
