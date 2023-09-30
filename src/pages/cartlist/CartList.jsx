@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './CartList.scss';
 import Slider from '../../components/slider/Slider';
+import { Link } from 'react-router-dom';
 
 const CartList = () => {
   const [products, setProducts] = useState([
@@ -49,7 +50,9 @@ const CartList = () => {
         <div className="total">
           <p>Total: ${calculateTotal()}</p>
         </div>
+        <Link to={'/checkout'}>
         <button className="checkout-button"> Go To Checkout</button>
+        </Link>
       </div>
     </div>
   );
