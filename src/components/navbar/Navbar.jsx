@@ -40,7 +40,9 @@ const Navbar = () => {
       </div>
     </div>
   </div>
+  <Link  to={'/cartlist'}>
   <i className="fa-solid fa-basket-shopping"></i>
+  </Link>
   <AiOutlineHeart/>
 </div>
 
