@@ -9,6 +9,7 @@ import Contact from "./pages/contact/Contact";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import CartList from "./pages/cartlist/CartList";
+import WishList from "./pages/wishlist/WishList";
 function App() {
   return (
     <div className="App">
@@ -23,6 +24,7 @@ function App() {
 <Route path="/login" element={<Login/>}/>
 <Route path="/register" element={<Register/>}/>
 <Route path="/cartlist" element={<CartList/>}/>
+<Route path="/wishlist" element={<WishList/>}/>
 
    </Routes>
    <Footer/>
