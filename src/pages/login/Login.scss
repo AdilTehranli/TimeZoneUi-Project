@@ -1,27 +1,56 @@
-.login{
-    .login__title{
-        margin-top: 80px;
-        .login__input__text{
-            display: flex;
-            width: 350px;
-            justify-content: center;
-            align-items: center;
-            margin:auto
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  
+    .container {
+      text-align: center;
+      margin-top: 80px;
+  
+      .login__title {
+        .login__input__text {
+          display: block;
+          width: 350px;
+          margin: 10px auto;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 16px;
         }
-        button{
+  
+        p {
+          margin-top: 15px;
+          font-size: 14px;
+  
+          a {
             color: #2577fd;
-            background-color: white;
-            border-color: #2577fd;
-            width: 355px;
-            border-radius: 13px;
-            height: 64px;
-            transition: 0.3s;
-
-            &:hover{
-                background-color: #2577fd;
-                color: white;
-                transition: 0.3s;
+            text-decoration: none;
+  
+            &:hover {
+              text-decoration: underline;
             }
+          }
         }
+  
+        button {
+          color: #2577fd;
+          background-color: white;
+          border: 2px solid #2577fd;
+          width: 355px;
+          border-radius: 13px;
+          height: 64px;
+          font-size: 18px;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background-color 0.3s, color 0.3s;
+  
+          &:hover {
+            background-color: #2577fd;
+            color: white;
+          }
+        }
+      }
     }
-}
+  }
+  
