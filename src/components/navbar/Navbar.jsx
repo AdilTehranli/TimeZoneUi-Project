@@ -3,6 +3,9 @@ import "../navbar/Navbar.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
+import { SlBasket } from "react-icons/sl";
 
 const Navbar = () => {
   return (
@@ -18,33 +21,33 @@ const Navbar = () => {
             </div>
             <div className="navbar__orderlist">
               <ul>
-                <li><Link to='/'>Home</Link> </li>
-                <li><Link to='/shop'>Shop</Link> </li>
-                <li><Link to='/about'>About</Link> </li>
+                <li><Link className="change__link" to='/'>Home</Link> </li>
+                <li><Link className="change__link"  to='/shop'>Shop</Link> </li>
+                <li><Link className="change__link" to='/about'>About</Link> </li>
                 <li>Blog  </li>
-                <li><Link to='/contact'>Contact</Link></li>
+                <li><Link className="change__link" to='/contact'>Contact</Link></li>
               </ul>
             </div>
             <div className="navbar__icons">
-  <i className="fa-solid fa-magnifying-glass"></i>
+<AiOutlineSearch className="search__icon"/>
   <div className="navbar__user" id="userIcon">
-    <i className="fa-regular fa-user"></i>
+   <AiOutlineUser className="search__icon"/>
     <div className="navbar__user__hover">
       <div className="user__text">
-        <Link to={'/register'}>
+        <Link className="hover__link" to={'/register'}>
           <p>Register</p>
         </Link>
-        <Link to={'/login'}>
+        <Link className="hover__link" to={'/login'}>
         <p>Login</p>
         </Link>
       </div>
     </div>
   </div>
-  <Link  to={'/cartlist'}>
-  <i className="fa-solid fa-basket-shopping"></i>
+  <Link className="icon__link" to={'/cartlist'}>
+<SlBasket className="shop__icon"/>
   </Link>
-  <Link to={'/wishlist'}>
-  <AiOutlineHeart/>
+  <Link className="icon__link" to={'/wishlist'}>
+  <AiOutlineHeart className="shop__icon"/>
   </Link>
 </div>
 

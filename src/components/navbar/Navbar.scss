@@ -19,6 +19,13 @@
           font-family: "Josefin Sans",sans-serif;
           li {
               margin-right: 10px; 
+            .change__link{
+              text-decoration: none;
+              color: black;
+              &:hover{
+                color: red;
+              }
+            }
               &:hover{
                 color: red;
                 cursor: pointer;
@@ -30,7 +37,13 @@
         display: flex;
         gap: 30px;
         align-items: center;
-      
+        .search__icon{
+          font-size: 20px;
+          &:hover{
+            color: red;
+            cursor: pointer;
+          }
+      }
         .navbar__user {
           cursor: pointer;
           position: relative;
@@ -38,7 +51,13 @@
           .fa-user {
             font-size: 18px;
           }
-      
+          .search__icon{
+              font-size: 20px;
+              &:hover{
+                color: red;
+                cursor: pointer;
+              }
+          }
           .navbar__user__hover {
             position: absolute;
             background-color: white;
@@ -57,11 +76,19 @@
             .user__text {
               display: none;
             }
-      
-            p {
+            .hover__link{
+              text-decoration: none;
+              color: black;
+              &:hover{
+                color: red;
+                
+              }
+              p {
               margin: 5px 0;
               cursor: pointer;
+              
             }
+          }
           }
       
           &:hover .navbar__user__hover {
@@ -70,6 +97,16 @@
       
             .user__text {
               display: block;
+            }
+          }
+        }
+        .icon__link{
+          color: black;
+          .shop__icon{
+            font-size: 20px;
+            &:hover{
+              color: red;
+              cursor: pointer;
             }
           }
         }
