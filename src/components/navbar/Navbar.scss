@@ -30,33 +30,50 @@
         display: flex;
         gap: 30px;
       
-        .navbar__user__hover {
-          display: none;
-          position: absolute;
-          background-color: white;
-          margin-top: 16px;
-          margin-left: 15px;
-          padding: 10px;
-          border-radius: 5px;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-          pointer-events: none;
-          transition: opacity 0.3s ease-in-out;
-          z-index: 1;
-          opacity: 0; /* Opacity set to 0 by default */
-      
-        
-        }
-      
-        .user {
+        .navbar__user {
           cursor: pointer;
           position: relative;
       
-          &:hover + .navbar__user__hover {
-            display: block;
-            opacity: 1; /* Show the hover content */
+          .fa-user {
+            font-size: 20px;
+          }
+      
+          .navbar__user__hover {
+            position: absolute;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 1;
+            margin-top: -1px; 
+            margin-left: -20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+      
+            .user__text {
+              display: none;
+            }
+      
+            p {
+              margin: 5px 0;
+              cursor: pointer;
+            }
+          }
+      
+          &:hover .navbar__user__hover {
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+      
+            .user__text {
+              display: block;
+            }
           }
         }
       }
+      
       
       
       

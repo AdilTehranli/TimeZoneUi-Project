@@ -25,18 +25,25 @@ const Navbar = () => {
                 <li><Link to='/contact'>Contact</Link></li>
               </ul>
             </div>
-              <div className="navbar__icons">
-                <i className="fa-solid fa-magnifying-glass"></i>
-                <Link to="/login">
-                <i className="user fa-regular fa-user"></i>
-                </Link>
-                <div className="navbar__user__hover">
-                  <p>Register</p>
-                  <p>Login</p>
-                </div>
-                <i className="fa-solid fa-basket-shopping"></i>
-                <AiOutlineHeart/>
-              </div>
+            <div className="navbar__icons">
+  <i className="fa-solid fa-magnifying-glass"></i>
+  <div className="navbar__user" id="userIcon">
+    <i className="fa-regular fa-user"></i>
+    <div className="navbar__user__hover">
+      <div className="user__text">
+        <Link to={'/register'}>
+          <p>Register</p>
+        </Link>
+        <Link to={'/login'}>
+        <p>Login</p>
+        </Link>
+      </div>
+    </div>
+  </div>
+  <i className="fa-solid fa-basket-shopping"></i>
+  <AiOutlineHeart/>
+</div>
+
             <div className="bar">
             <i class="fa-solid fa-bars"></i>
             </div>

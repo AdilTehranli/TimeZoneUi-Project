@@ -12,7 +12,7 @@ const Register = () => {
       <input className="register__input__text form-control " type="email" placeholder="Email" />
       <input className="register__input__text form-control " type="text" placeholder="Username" />
       <input className="register__input__text form-control " type="password" placeholder="Password" />
-      <button className="mt-5">Register</button>
+      <button  className="mt-5">Register</button>
     </div>
         </div>
     </div>
