@@ -1,8 +1,8 @@
 import React from "react";
-import Slider from "../../components/slider/Slider";
-import '../shop/Shop.scss';
-import Products from "../../components/products/Products";
-import Wrapper from "../../components/wrapper/Wrapper";
+import Slider from "../../../components/slider/Slider";
+import './Shop.scss';
+import Products from "../../../components/products/Products";
+import Wrapper from "../../../components/wrapper/Wrapper";
 const Shop = () => {
   return (
     <div>

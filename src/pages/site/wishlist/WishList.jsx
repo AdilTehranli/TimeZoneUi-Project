@@ -1,6 +1,7 @@
 import React from 'react';
 import './WishList.scss';
-import Slider from '../../components/slider/Slider';
+import Slider from '../../../components//slider/Slider';
+
 
 const WishList = () => {
   const products = [

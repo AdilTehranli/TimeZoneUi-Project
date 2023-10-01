@@ -8,6 +8,7 @@ import { DefaultPlayer as Video } from "react-html5video";
 import "react-html5video/dist/styles.css";
 import video from "../../assets/videos/Rolex Glidelock – Take it up a notch.mp4";
 import Wrapper from "../../components/wrapper/Wrapper";
+import { Link } from "react-router-dom";
 AOS.init();
 const contentStyle = {};
 const Home = () => {
@@ -165,7 +166,9 @@ const Home = () => {
                 nisi ut aliquip ex ea commodo consequat. Duis aute <br /> irure dolor
                 in reprehenderit in voluptate velit esse.
               </p>
+              <Link to={'/shop'}>
               <button>SHOW WATCHES</button>
+              </Link>
             </div>
             <div className="choise__left col-6">
               <img src="	https://themewagon.github.io/timezone/assets/img/gallery/choce_watch1.png" alt="" />
@@ -181,7 +184,9 @@ const Home = () => {
                 nisi ut aliquip ex ea commodo consequat. Duis aute <br /> irure dolor
                 in reprehenderit in voluptate velit esse.
               </p>
+              <Link to={'/shop'}>
               <button>SHOW WATCHES</button>
+              </Link>
             </div>
           </div>
         </div>
