@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import "../home/Home.scss";
 import { Carousel } from "antd";
 import Products from "../../components/products/Products";
@@ -9,12 +9,28 @@ import "react-html5video/dist/styles.css";
 import video from "../../assets/videos/Rolex Glidelock – Take it up a notch.mp4";
 import Wrapper from "../../components/wrapper/Wrapper";
 import { Link } from "react-router-dom";
+import axios from "axios";
 AOS.init();
 const contentStyle = {};
 const Home = () => {
   const onChange = (currentSlide) => {
     console.log(currentSlide);
   };
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('https://fakestoreapi.com/products')
+      .then((res) => {
+        setProducts(res.data);
+        setLoading(false); 
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false); 
+      });
+  }, []);
   return (
     <div className="section">
       <div className="sliders ">
@@ -144,7 +160,15 @@ const Home = () => {
               ultrices gravida.
             </p>
           </div>
-          <Products />
+          <div>
+     
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <Products items={products} />
+      )}
+    </div>
+
           <div className="items__btn">
             <button>VIEW MORE PRODUCTS</button>
           </div>

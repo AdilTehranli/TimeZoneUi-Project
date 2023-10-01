@@ -1,25 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import '../products/Products.scss';
 
-const Products = () => {
-  const [items, setItems] = useState([]);
-
+const Products = ({ items }) => {
+  const [item, setItems] = useState([]); 
+  
   useEffect(() => {
-    axios
-      .get('https://fakestoreapi.com/products')
-      .then((res) => {
-        setItems(res.data);
-      })
-      .catch((error) => console.error(error));
-  }, []);
+    if (items && items.length > 0) {
+      setItems(items); 
+    }
+  }, [items]);
+  
+  if (!items) {
+    return <div>Loading...</div>;
+  }
+
+  if (items.length === 0) {
+    return <div>No items available</div>;
+  }
+  if (!item || item.length === 0) {
+    return <div>No items available</div>;
+  }
 
   return (
-    <div className='products'>
+    <div className="products">
       <div className="container">
         <div className="row">
-          {items.map((product, index) => (
+          {item.map((product, index) => (
             <div key={index} className="col-4 products__item">
               <div className="products__item__container">
                 <div className="products__item__image">
@@ -32,7 +39,7 @@ const Products = () => {
                   </div>
                 </div>
                 <div className="products__item__title">
-                  <Link className='title__link' to={`/productdetail/${product.id}`}> 
+                  <Link className="title__link" to={`/productdetail/${product.id}`}>
                     <h3>{product.title}</h3>
                   </Link>
                   <p>${product.price}</p>

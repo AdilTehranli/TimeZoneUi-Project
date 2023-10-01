@@ -1,15 +1,42 @@
-import React from "react";
-import Slider from "../../../components/slider/Slider";
+import React, { useState, useEffect } from 'react';
+import Slider from '../../../components/slider/Slider';
 import './Shop.scss';
-import Products from "../../../components/products/Products";
-import Wrapper from "../../../components/wrapper/Wrapper";
+import Products from '../../../components/products/Products';
+import Wrapper from '../../../components/wrapper/Wrapper';
+import PriceRange from '../../../components/pricerange/PriceRange';
+import axios from 'axios'; 
+
 const Shop = () => {
+  const [priceRange, setPriceRange] = useState([1, 1000]);
+  const [items, setItems] = useState([]); 
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const handlePriceChange = (range) => {
+    setPriceRange(range);
+  };
+
+  useEffect(() => {
+  
+    axios
+      .get('https://fakestoreapi.com/products')
+      .then((res) => {
+        setItems(res.data);
+      })
+      .catch((error) => console.error(error));
+  }, []); 
+
+  useEffect(() => {
+    const filteredItems = items.filter(
+      (item) => item.price >= priceRange[0] && item.price <= priceRange[1]
+    );
+    setFilteredProducts(filteredItems);
+  }, [priceRange, items]);
+
   return (
     <div>
       <Slider title="Watch Shop" />
       <div className="container">
-
-<div className="sort">
+      <div className="sort">
 
 <div className="row">
 
@@ -31,10 +58,16 @@ const Shop = () => {
 
 </div>
 </div>
-<Products/>
-<Wrapper/>
+        <div className="row">
+          <div className="col-2">
+            <PriceRange onPriceChange={handlePriceChange} />
+          </div>
+          <div className="col-10">
+            <Products items={filteredProducts} /> 
+          </div>
+        </div>
+        <Wrapper />
       </div>
-     
     </div>
   );
 };
