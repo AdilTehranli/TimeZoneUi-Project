@@ -32,7 +32,7 @@ const Products = () => {
                   </div>
                 </div>
                 <div className="products__item__title">
-                  <Link to={`/productdetail/${product.id}`}> 
+                  <Link className='title__link' to={`/productdetail/${product.id}`}> 
                     <h3>{product.title}</h3>
                   </Link>
                   <p>${product.price}</p>

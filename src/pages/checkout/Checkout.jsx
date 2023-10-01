@@ -38,6 +38,7 @@ const Checkout = () => {
             <span>Total Price:</span>
             <span>$45.80</span>
           </div>
+          <button>Complate</button>
         </div>
       </div>
       </div>

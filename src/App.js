@@ -11,10 +11,12 @@ import Register from "./pages/register/Register";
 import CartList from "./pages/cartlist/CartList";
 import WishList from "./pages/site/wishlist/WishList";
 import Checkout from "./pages/checkout/Checkout";
+import ScrollUp from "./components/scrollup/ScrollUp";
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+   <ScrollUp/>  
    <Navbar/>
    <Routes>
 <Route path="/" element={<Home/>}/>

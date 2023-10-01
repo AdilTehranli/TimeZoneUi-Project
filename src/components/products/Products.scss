@@ -52,14 +52,17 @@
   
       .products__item__title {
         text-align: center;
-  
-        h3 {
-          color: #444444;
-          font-family: "Josefin Sans", sans-serif;
-          font-weight: 600;
-          margin-top: 15px;
-          font-size: 25px;
-        }
+  .title__link {
+    color: #444444;
+    text-decoration: none;
+    h3 {
+      color: #444444;
+      font-family: "Josefin Sans", sans-serif;
+      font-weight: 600;
+      margin-top: 15px;
+      font-size: 25px;
+    }
+  }
   
         p {
 
