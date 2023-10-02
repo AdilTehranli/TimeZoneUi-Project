@@ -21,6 +21,10 @@ const CartList = () => {
     );
   };
 
+  const calculateProductTotal = (product) => {
+    return (product.price * product.quantity).toFixed(2);
+  };
+
   const calculateTotal = () => {
     return products.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
   };
@@ -44,11 +48,14 @@ const CartList = () => {
                 <span>{product.quantity}</span>
                 <button onClick={() => handleQuantityChange(product.id, product.quantity + 1)}>+</button>
               </div>
+              <div className="product__total">
+                <p>Total: ${calculateProductTotal(product)}</p>
+              </div>
             </div>
           ))}
         </div>
         <div className="total">
-          <p>Total: ${calculateTotal()}</p>
+          <p>SubTotal: ${calculateTotal()}</p>
         </div>
         <Link to={'/checkout'}>
         <button className="checkout-button"> Go To Checkout</button>
@@ -59,3 +66,4 @@ const CartList = () => {
 }
 
 export default CartList;
+  
