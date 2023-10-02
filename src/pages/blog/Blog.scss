@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins&display=swap');   
+.blog{
+    margin-top: 40px;
+    .blog__main{
+        
+        margin-left: 30px;
+        box-shadow: 0px 10px 20px 0px rgba(221,221,221,0.3);
+        .blog__main__image{
+            position: relative;
+            img{
+                width: 867px;
+            }
+        }
+        .blog__main__position{
+            background-color: red;
+            width: 95px;
+            height: 90px;
+            border-radius: 15px;
+            position: absolute;
+            bottom: -23px;
+            margin-left: 30px;
+            p{
+                font-size: 29px;
+                width: 23px;
+                margin-left: 27px;
+                align-items: center;
+                text-align: center;
+                color: white;
+            }
+        }
+        .blog__main__texts{
+            margin-left: 30px;
+            h4{
+                font-family: "Josefin Sans",sans-serif;
+                font-weight: 600;
+                margin-top: 50px;
+            }
+            p{
+                margin-top: 17px;
+             color: #777;;
+            }
+            .blog__icon{
+                margin-top: 30px;
+                color: #999999;
+            }
+        }
+    }
+    .blog__funktions{
+        width: 290px;
+        height: 145px;
+        background-color: #fbf9ff;
+        margin-left: 40px;
+        .blog__funktions__inp{
+            position: relative;
+            .blog__funktions__icon{
+                position: absolute;
+    top: 0px;
+    border-radius: 5px;
+    right: 0px;
+    background-color: red;
+    height: 37px;
+    width: 39px;
+                background-color: red;
+                .blog__funktions__search{
+                    color: white;
+                    font-size: 22px;
+                    margin-left: 11px;
+                    margin: 8px;
+                    cursor: pointer;
+                }
+            }
+        }
+        button{
+            background-color: red;
+            color: white;
+            height: 42px;
+            width: 262px;
+            border: none;
+            margin: 12px 3px;
+
+        }
+    }
+}

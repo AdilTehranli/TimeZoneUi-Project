@@ -12,6 +12,7 @@ import CartList from "./pages/cartlist/CartList";
 import WishList from "./pages/site/wishlist/WishList";
 import Checkout from "./pages/checkout/Checkout";
 import ScrollUp from "./components/scrollup/ScrollUp";
+import Blog from "./pages/blog/Blog";
 function App() {
   return (
     <div className="App">
@@ -29,6 +30,7 @@ function App() {
 <Route path="/cartlist" element={<CartList/>}/>
 <Route path="/wishlist" element={<WishList/>}/>
 <Route path="/checkout" element={<Checkout/>}/>
+<Route path="/blog" element={<Blog/>}/>
 
    </Routes>
    <Footer/>

@@ -24,7 +24,7 @@ const Navbar = () => {
                 <li><Link className="change__link" to='/'>Home</Link> </li>
                 <li><Link className="change__link"  to='/shop'>Shop</Link> </li>
                 <li><Link className="change__link" to='/about'>About</Link> </li>
-                <li>Blog  </li>
+                <li><Link className="change__link" to={'/blog'}>Blog</Link></li>
                 <li><Link className="change__link" to='/contact'>Contact</Link></li>
               </ul>
             </div>
