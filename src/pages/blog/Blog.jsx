@@ -4,6 +4,7 @@ import Slider from '../../components/slider/Slider';
 import { FaComments } from 'react-icons/fa';
 import { AiOutlineSearch } from 'react-icons/ai';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Blog = () => {
     const [item, setItem] = useState([]);
@@ -47,7 +48,9 @@ const Blog = () => {
                                             </div>
                                         </div>
                                         <div className="blog__main__texts">
+                                            <Link className='blog__main__title' to={`/blogdetail/${product.id}`}>
                                             <h4>{product.title}</h4>
+                                            </Link>
                                             <p>
                                                 {product.description}
                                             </p>

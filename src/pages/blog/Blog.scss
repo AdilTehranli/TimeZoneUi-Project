@@ -8,6 +8,7 @@
         .blog__main__image{
             position: relative;
             img{
+                margin-top: 40px;
                 width: 200px;
             }
         }
@@ -30,10 +31,14 @@
         }
         .blog__main__texts{
             margin-left: 30px;
-            h4{
-                font-family: "Josefin Sans",sans-serif;
-                font-weight: 600;
-                margin-top: 50px;
+            .blog__main__title{
+                color:black;
+                text-decoration: none;
+                h4{
+                    font-family: "Josefin Sans",sans-serif;
+                    font-weight: 600;
+                    margin-top: 50px;
+                }
             }
             p{
                 margin-top: 17px;

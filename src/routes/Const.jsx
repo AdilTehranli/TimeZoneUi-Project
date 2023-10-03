@@ -11,4 +11,5 @@ export const Router = {
     WishList: "/wishList",
     Checkout: "/checkout",
     Blog: "/blog",
+    BlogDetails: "/blogdetail/:id"
 }

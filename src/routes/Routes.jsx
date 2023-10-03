@@ -14,10 +14,13 @@ import Checkout from '../pages/checkout/Checkout';
 import Blog from '../pages/blog/Blog';
 import Navbar from '../components/navbar/Navbar';
 import Footer from '../layouts/footer/Footer';
+import ScrollUp from '../components/scrollup/ScrollUp';
+import BlogDetails from '../pages/blogdetails/BlogDetails';
 
 function Routs() {
   return (
     <BrowserRouter>
+    <ScrollUp/>
     <Navbar/>
     <Routes>
     <Route path={Router.Home.toString()} element={<Home/>}/>
@@ -31,6 +34,7 @@ function Routs() {
 <Route path={Router.WishList.toString()} element={<WishList/>}/>
 <Route path={Router.Checkout.toString()} element={<Checkout/>}/>
 <Route path={Router.Blog.toString()} element={<Blog/>}/>
+<Route path={Router.BlogDetails.toString()} element={<BlogDetails/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>

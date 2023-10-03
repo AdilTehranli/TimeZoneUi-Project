@@ -1,0 +1,25 @@
+.blogdetails{
+    margin-top: 90px;
+    .blogdetails__main{
+        .blogdetails__title{
+            font-family: "Josefin Sans",sans-serif;
+            font-size: 30px;
+            margin-top: 20px;
+        }
+        img{
+            width: 200px;
+        }
+        p{
+            color: #999999;
+        }
+        .blogdetails__description{
+            color:#999999 ;
+            
+            border-bottom: 1px solid #f0e9ff;
+        }
+        .blofdetails__likes{
+            color: #999999;
+            margin-top: 20px;
+        }
+    }
+}
