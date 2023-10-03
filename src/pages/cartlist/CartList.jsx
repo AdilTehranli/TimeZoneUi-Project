@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import './CartList.scss';
 import Slider from '../../components/slider/Slider';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const CartList = () => {
   const [products, setProducts] = useState([
     { id: 1, name: 'Product 1', price: 19.80, quantity: 1 },
     { id: 2, name: 'Product 2', price: 24.50, quantity: 1 },
   ]);
-
+  const cart =useSelector(state=>state.cart)
+  console.log(cart);
   const handleQuantityChange = (productId, newQuantity) => {
     if (newQuantity < 0) {
       return;

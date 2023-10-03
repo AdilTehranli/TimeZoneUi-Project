@@ -6,8 +6,9 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 import { SlBasket } from "react-icons/sl";
-
+import { useSelector } from 'react-redux';
 const Navbar = () => {
+  const totalItems = useSelector(state => state.cart.totalItems); 
   return (
     <div>
       <nav className="navbar">
@@ -44,7 +45,7 @@ const Navbar = () => {
     </div>
   </div>
   <Link className="icon__link" to={'/cartlist'}>
-<SlBasket className="shop__icon"/>
+  <SlBasket className="shop__icon"/><span>{totalItems}</span>
   </Link>
   <Link className="icon__link" to={'/wishlist'}>
   <AiOutlineHeart className="shop__icon"/>

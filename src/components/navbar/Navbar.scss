@@ -100,7 +100,16 @@
           }
         }
         .icon__link{
+          text-decoration: none;
           color: black;
+          span{
+            background-color: red;
+            color: white;
+            padding: 3px;
+            text-decoration: none;
+            border-radius: 48px;
+        
+          }
           .shop__icon{
             font-size: 20px;
             &:hover{

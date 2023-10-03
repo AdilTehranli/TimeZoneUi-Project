@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../products/Products.scss';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/slice/CartSlice';
+import { ToastContainer, toast } from 'react-toastify';    
+import 'react-toastify/dist/ReactToastify.css';   
 
 const Products = ({ items }) => {
   const [item, setItems] = useState([]); 
-  
+  const dispatch=useDispatch()
+  const handleAddToCart = (product) => {
+    dispatch(addToCart({
+      ...product,
+      quantity: 1 
+    }));
+  };
+
   useEffect(() => {
     if (items && items.length > 0) {
       setItems(items); 
@@ -35,7 +46,11 @@ const Products = ({ items }) => {
                     <i className="fa-regular fa-heart"></i>
                   </div>
                   <div className="products__item__image__text">
-                    <p>Add To Cart</p>
+                  <p onClick={() => {
+  handleAddToCart(product);toast.success('added to the card');
+}}>Add To Cart</p>
+<ToastContainer/>
+
                   </div>
                 </div>
                 <div className="products__item__title">
