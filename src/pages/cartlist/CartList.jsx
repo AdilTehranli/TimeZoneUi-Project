@@ -1,47 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './CartList.scss';
-import Slider from '../../components/slider/Slider';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import Slider from '../../components/slider/Slider';
+import { useSelector, useDispatch } from 'react-redux';
 
 const CartList = () => {
-  const [product, setProducts] = useState([]);
-
   const cart = useSelector(state => state.cart.list);
+  const [cartProducts, setCartProducts] = useState(cart);
+  const dispatch = useDispatch();
 
   const handleQuantityChange = (productId, newQuantity) => {
     if (newQuantity < 0) {
       return;
     }
-  
-    const updatedCart = cart.map(product =>
+
+    const updatedCart = cartProducts.map(product =>
       product.id === productId
         ? { ...product, quantity: newQuantity }
         : product
     );
-  
-    setProducts(updatedCart);
+
+    setCartProducts(updatedCart);
+    calculateTotal();  
   };
-  
+
   const calculateProductTotal = (product) => {
     return (product.price * product.quantity).toFixed(2);
   };
+
   const calculateTotal = () => {
     let total = 0;
-    cart.forEach(product => {
+    cartProducts.forEach(product => {
       total += product.price * product.quantity;
     });
     return total.toFixed(2);
   };
-  
 
+
+  useEffect(() => {
+    setCartProducts(cart);
+  }, [cart]);
+  
   return (
     <div>
       <Slider title="Cart List" />
       <div className="container">
         <div className="cart-container">
-          {cart.map(product => (
+          {cartProducts.map(product => (
             <div className="product-card" key={product.id}>
               <div className="product-info">
                 <img src={product.image} alt={product.title} width="100" />
@@ -51,15 +56,13 @@ const CartList = () => {
                 </div>
               </div>
               <div className="quantity">
-                <button onClick={() => handleQuantityChange(()=>product.id, product.quantity - 1)}>-</button>
+                <button onClick={() => handleQuantityChange(product.id, product.quantity - 1)}>-</button>
                 <span>{product.quantity}</span>
-                <button onClick={() => handleQuantityChange(()=>
-                  product.id, product.quantity + 1)}>+</button>
+                <button onClick={() => handleQuantityChange(product.id, product.quantity + 1)}>+</button>
               </div>
               <div className="product__total">
-  <p>Total: ${calculateProductTotal(product)}</p>
-</div>
-
+                <p>Total: ${calculateProductTotal(product)}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -72,6 +75,6 @@ const CartList = () => {
       </div>
     </div>
   );
-}
+};
 
 export default CartList;
