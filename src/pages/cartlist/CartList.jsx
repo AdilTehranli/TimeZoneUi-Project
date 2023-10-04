@@ -30,25 +30,39 @@ const CartList = () => {
     setCartProducts(updatedCart);
     calculateTotal();
   };
-  
-  
-
   const calculateProductTotal = (product) => {
-    return (product.price * product.quantity).toFixed(2);
+    if (product && typeof product.price === 'number' && typeof product.quantity === 'number') {
+      return (product.price * product.quantity).toFixed(2);
+    } else {
+      return "0.00"; 
+    }
   };
-
+  
+  
+  
   const calculateTotal = () => {
     let total = 0;
     cartProducts.forEach(product => {
-      total += product.price * product.quantity;
+      if (product && product.price !== undefined && product.quantity !== undefined) {
+        total += product.price * product.quantity;
+      }
     });
     return total.toFixed(2);
   };
-
+  
 
   useEffect(() => {
-    setCartProducts(cart);
+    setCartProducts(cart || []); 
   }, [cart]);
+  useEffect(() => {
+    const storedCartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+    setCartProducts(storedCartProducts);
+  }, []); 
+  
+  useEffect(() => {
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+    calculateTotal();
+  }, [cartProducts]); 
   
   return (
     <div>
@@ -61,7 +75,7 @@ const CartList = () => {
                 <img src={product.image} alt={product.title} width="100" />
                 <div className="product-details">
                   <h3>{product.title}</h3>
-                  <p>${product.price.toFixed(2)}</p>
+                  <p>${product.price}</p>
                 </div>
               </div>
               <div className="quantity">

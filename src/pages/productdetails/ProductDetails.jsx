@@ -4,11 +4,29 @@ import axios from 'axios';
 import Slider from '../../components/slider/Slider';
 import '../productdetails/ProductDetails.scss';
 import Spinner from '../../components/spinner/Spinner';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/slice/CartSlice';
+import { ToastContainer } from 'react-toastify';
 
 const ProductDetails = () => {
   const { id } = useParams(); 
   const [product, setProduct] = useState(null);
+  const [cartProducts, setCartProducts] = useState([]);
+  const dispatch=useDispatch()
+  const handleAddToCart = (product) => {
+    const existingProduct = cartProducts.find((p) => p.id === product.id);
+  
+    if (existingProduct) {
+      const updatedCart = cartProducts.map((p) =>
+        p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+      );
+      setCartProducts(updatedCart);
+    } else {
+      dispatch(addToCart({ ...product, quantity: 1 }));
+    }
+  
 
+  };
   useEffect(() => {
     axios
       .get(`https://fakestoreapi.com/products/${id}`)
@@ -32,13 +50,24 @@ const ProductDetails = () => {
   <div className="product_info col-6">
     <h2>{product.title}</h2>
     <p>${product.price}</p>
-    <button>Add To Cart</button>
+    <button onClick={()=>handleAddToCart(product)}>Add To Cart</button>
     <button>Add To Wishlist</button>
   </div>
 </div>
           </div>
 
 
+          <ToastContainer
+          position="top-right"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"/>
 
       </div>
       ) : (
@@ -46,6 +75,7 @@ const ProductDetails = () => {
         )}
     </div>
         </div>
+            
   );
 };
 
