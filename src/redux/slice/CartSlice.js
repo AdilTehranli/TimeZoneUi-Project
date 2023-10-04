@@ -5,12 +5,18 @@ const cartSlice = createSlice({
   initialState: { list: [], total: 0, totalItems: 0 },
   reducers: {
     addToCart: (state, action) => {
-      const quantity = Number(action.payload.quantity); 
+      const productToAdd = action.payload;
+      const existingProductIndex = state.list.findIndex(item => item.id === productToAdd.id);
 
-      state.list.push(action.payload);
-      state.total += quantity;
-      state.totalItems += quantity;
-    
+      if (existingProductIndex !== -1) {
+        state.list[existingProductIndex].quantity += productToAdd.quantity;
+        state.total += productToAdd.quantity;
+        state.totalItems += productToAdd.quantity;
+      } else {
+        state.list.push(productToAdd);
+        state.total += productToAdd.quantity;
+        state.totalItems += productToAdd.quantity;
+      }
     }
   }
 });

@@ -3,18 +3,28 @@ import { Link } from 'react-router-dom';
 import '../products/Products.scss';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/slice/CartSlice';
-import { ToastContainer, toast } from 'react-toastify';    
-import 'react-toastify/dist/ReactToastify.css';   
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Products = ({ items }) => {
   const [item, setItems] = useState([]); 
+  const [cartProducts, setCartProducts] = useState([]);
   const dispatch=useDispatch()
   const handleAddToCart = (product) => {
-    dispatch(addToCart({
-      ...product,
-      quantity: 1 
-    }));
+    const existingProduct = cartProducts.find((p) => p.id === product.id);
+  
+    if (existingProduct) {
+      const updatedCart = cartProducts.map((p) =>
+        p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+      );
+      setCartProducts(updatedCart);
+    } else {
+      dispatch(addToCart({ ...product, quantity: 1 }));
+    }
+  
+
   };
+  
 
   useEffect(() => {
     if (items && items.length > 0) {

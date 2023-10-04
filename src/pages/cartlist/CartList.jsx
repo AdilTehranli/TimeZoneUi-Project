@@ -5,24 +5,33 @@ import Slider from '../../components/slider/Slider';
 import { useSelector, useDispatch } from 'react-redux';
 
 const CartList = () => {
+  const [items, setItems] = useState([]);  
+
   const cart = useSelector(state => state.cart.list);
   const [cartProducts, setCartProducts] = useState(cart);
   const dispatch = useDispatch();
+  const item = useSelector(state => state.items);
 
   const handleQuantityChange = (productId, newQuantity) => {
-    if (newQuantity < 0) {
-      return;
+    if (newQuantity < 1) {
+      newQuantity = 1; 
     }
-
-    const updatedCart = cartProducts.map(product =>
-      product.id === productId
-        ? { ...product, quantity: newQuantity }
-        : product
+  
+    const updatedCart = cartProducts.map((product) =>
+      product.id === productId ? { ...product, quantity: newQuantity } : product
     );
-
+    const existingProduct = updatedCart.find((p) => p.id === productId);
+  
+    if (!existingProduct) {
+      const productToAdd = items.find((item) => item.id === productId);
+      updatedCart.push({ ...productToAdd, quantity: 1 });
+    }
+  
     setCartProducts(updatedCart);
-    calculateTotal();  
+    calculateTotal();
   };
+  
+  
 
   const calculateProductTotal = (product) => {
     return (product.price * product.quantity).toFixed(2);
