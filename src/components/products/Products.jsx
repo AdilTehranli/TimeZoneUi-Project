@@ -47,9 +47,8 @@ const Products = ({ items }) => {
                   </div>
                   <div className="products__item__image__text">
                   <p onClick={() => {
-  handleAddToCart(product);toast.success('added to the card');
+  handleAddToCart(product);toast.success('Added to the card');
 }}>Add To Cart</p>
-<ToastContainer/>
 
                   </div>
                 </div>
@@ -64,6 +63,17 @@ const Products = ({ items }) => {
           ))}
         </div>
       </div>
+<ToastContainer
+position="top-right"
+autoClose={1500}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"/>
     </div>
   );
 };
