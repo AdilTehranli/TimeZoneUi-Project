@@ -12,7 +12,7 @@ const Products = ({ items }) => {
   const [item, setItems] = useState([]); 
   const [cartProducts, setCartProducts] = useState([]);
   const dispatch=useDispatch()
-  const handleAddToCart = (product) => {
+  const handleAddToCart = (product) => {  
     const existingProduct = cartProducts.find((p) => p.id === product.id);
   
     if (existingProduct) {

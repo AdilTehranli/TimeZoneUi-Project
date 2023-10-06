@@ -15,10 +15,13 @@ const Navbar = () => {
         <div className="container">
           <div className="navbar__all">
             <div className="navbar__logo">
+              <Link to={'/'}>
+
               <img
                 src="https://themewagon.github.io/timezone/assets/img/logo/logo.png"
                 alt=""
-              />
+                />
+                </Link>
             </div>
             <div className="navbar__orderlist">
               <ul>

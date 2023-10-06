@@ -170,7 +170,9 @@ const Home = () => {
     </div>
 
           <div className="items__btn">
+            <Link to={'/shop'}>
             <button>VIEW MORE PRODUCTS</button>
+            </Link>
           </div>
         </div>
       </div>

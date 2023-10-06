@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './WishList.scss';
 import Slider from '../../../components/slider/Slider';
 import { addToCart } from '../../../redux/slice/CartSlice';
+import { toast } from 'react-toastify';
 
 const WishList = () => {
   const [cartProducts, setCartProducts] = useState([])
@@ -19,6 +20,7 @@ const WishList = () => {
     } else {
       dispatch(addToCart({ ...product, quantity: 1 }));
     }
+    toast.success('Added to cart');
   };
 
   const likedProducts = useSelector(state => state.likeslice.list);

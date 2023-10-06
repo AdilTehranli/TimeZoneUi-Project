@@ -7,6 +7,7 @@ import Spinner from '../../components/spinner/Spinner';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/slice/CartSlice';
 import { ToastContainer, toast } from 'react-toastify';
+import { addlike } from '../../redux/slice/LikeSlice';
 
 const ProductDetails = () => {
   const { id } = useParams(); 
@@ -26,6 +27,10 @@ const ProductDetails = () => {
     }
   
 toast.success("Added to the card")
+  };
+  const handleLikeProduct = (product) => {
+    dispatch(addlike(product));
+    toast.success('Product added to wishlist');
   };
   useEffect(() => {
     axios
@@ -51,7 +56,7 @@ toast.success("Added to the card")
     <h2>{product.title}</h2>
     <p>${product.price}</p>
     <button onClick={()=>handleAddToCart(product)}>Add To Cart</button>
-    <button>Add To Wishlist</button>
+    <button onClick={()=>handleLikeProduct(product)} >Add To Wishlist</button>
   </div>
 </div>
           </div>
