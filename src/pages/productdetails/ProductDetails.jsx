@@ -6,7 +6,7 @@ import '../productdetails/ProductDetails.scss';
 import Spinner from '../../components/spinner/Spinner';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/slice/CartSlice';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 const ProductDetails = () => {
   const { id } = useParams(); 
@@ -25,7 +25,7 @@ const ProductDetails = () => {
       dispatch(addToCart({ ...product, quantity: 1 }));
     }
   
-
+toast.success("Added to the card")
   };
   useEffect(() => {
     axios

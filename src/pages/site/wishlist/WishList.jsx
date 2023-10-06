@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'; 
 import './WishList.scss';
-import Slider from '../../../components//slider/Slider';
-
+import Slider from '../../../components/slider/Slider';
+import { addToCart } from '../../../redux/slice/CartSlice';
 
 const WishList = () => {
-  const products = [
-    { id: 1, name: 'Wish Product 1', price: 25.00 },
-    { id: 2, name: 'Wish Product 2', price: 19.99 },
-  ];
+  const [cartProducts, setCartProducts] = useState([])
+  const dispatch = useDispatch(); 
+
+  const handleAddToCart = (product) => {
+    const existingProduct = cartProducts.find((p) => p.id === product.id);
+  
+    if (existingProduct) {
+      const updatedCart = cartProducts.map((p) =>
+        p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+      );
+      setCartProducts(updatedCart);
+    } else {
+      dispatch(addToCart({ ...product, quantity: 1 }));
+    }
+  };
+
+  const likedProducts = useSelector(state => state.likeslice.list);
 
   return (
     <div>
@@ -22,15 +36,15 @@ const WishList = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map(product => (
+            {likedProducts.map(product => (
               <tr key={product.id}>
                 <td>
-                  <img src={`https://via.placeholder.com/100`} alt={`Product ${product.id}`} />
-                  <span>{product.name}</span>
+                  <img src={product.image} alt={`Product ${product.id}`} />
+                  <span>{product.title}</span>
                 </td>
                 <td>${product.price.toFixed(2)}</td>
                 <td>
-                  <button className="wishlist-add-to-cart-button">Add to Cart</button>
+                  <button className="wishlist-add-to-cart-button" onClick={()=>handleAddToCart(product)}>Add to Cart</button>
                 </td>
               </tr>
             ))}

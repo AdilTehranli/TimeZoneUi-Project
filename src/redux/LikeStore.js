@@ -1,6 +1,9 @@
-
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./RootReducer";
+import likeReducer from "./slice/LikeSlice"; 
+
+const rootReducer = {
+  likeReducer: likeReducer  
+};
 
 const store = configureStore({
   reducer: rootReducer

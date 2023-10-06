@@ -5,8 +5,10 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/slice/CartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { addlike } from '../../redux/slice/LikeSlice';
 
 const Products = ({ items }) => {
+  const [likedProducts, setLikedProducts] = useState([]);
   const [item, setItems] = useState([]); 
   const [cartProducts, setCartProducts] = useState([]);
   const dispatch=useDispatch()
@@ -25,7 +27,10 @@ const Products = ({ items }) => {
 
   };
   
-
+  const handleLikeProduct = (product) => {
+    dispatch(addlike(product));
+    toast.success('Product added to wishlist');
+  };
   useEffect(() => {
     if (items && items.length > 0) {
       setItems(items); 
@@ -53,7 +58,7 @@ const Products = ({ items }) => {
                 <div className="products__item__image">
                   <img src={product.image} alt="" />
                   <div className="products__item__image__icon">
-                    <i className="fa-regular fa-heart"></i>
+                  <i className="fa-regular fa-heart" onClick={() => handleLikeProduct(product)}></i>
                   </div>
                   <div className="products__item__image__text">
                   <p onClick={() => {

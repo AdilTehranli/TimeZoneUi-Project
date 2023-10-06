@@ -1,3 +1,6 @@
+// body{
+//   scroll-padding-top: 1.5rem;
+// }
   .navbar {
     .navbar__all {
       display: flex;
@@ -5,9 +8,7 @@
         width: 100%;
         margin-top: 40px;
         
-      .navbar__logo {
-      }
-  
+    
       .navbar__orderlist {
         ul {
           display: flex;
