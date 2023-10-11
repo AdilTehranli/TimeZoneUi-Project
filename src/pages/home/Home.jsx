@@ -18,7 +18,8 @@ const Home = () => {
   };
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
-
+  const [items,setItems] = useState([]);
+  
   useEffect(() => {
     axios
       .get('https://fakestoreapi.com/products')
@@ -31,35 +32,45 @@ const Home = () => {
         setLoading(false); 
       });
   }, []);
+  useEffect(() => {
+    axios.get('https://localhost:7027/api/Sliders')
+    .then(res=>{
+  setItems(res.data);
+    }).catch((error) =>{
+      console.error(error);
+      setLoading(false); 
+    })
+  },[])
   return (
     <div className="section">
       <div className="sliders ">
         <div className="container">
           <Carousel afterChange={onChange}>
+                {items.map((slider,index)=>(
             <div>
               <h3 style={contentStyle}>
-                <div className="slider__all d-flex">
+
+                <div key={index} className="slider__all d-flex">
                   <div className="slider__title">
                     <div  data-aos="fade-right">
-                      <h1>Select Your New Perfect Style</h1>
+                      <h1>{slider.title}</h1>
                       <p>
-                        Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco laboris nisi ut aliquip ex ea <br /> commodo
-                        consequat is aute irure.
+                        {slider.description}
                       </p>
                       <button>SHOP NOW</button>
                     </div>
                   </div>
                   <div className="slider__image">
                     <img
-                      src="	https://themewagon.github.io/timezone/assets/img/hero/watch.png"
-                      alt=""
+                      src={`https://localhost:7027//${slider.sliderImage}`}
+                      alt={slider.title}
                     />
                   </div>
                 </div>
               </h3>
             </div>
-            <div>
+                ))}
+            {/* <div>
               <h3 style={contentStyle}>
                 <div className="slider__all d-flex">
                   <div className="slider__title">
@@ -79,7 +90,7 @@ const Home = () => {
                   </div>
                 </div>
               </h3>
-            </div>
+            </div> */}
             <div>
               <h3 style={contentStyle}></h3>
             </div>

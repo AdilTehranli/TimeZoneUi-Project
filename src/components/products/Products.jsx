@@ -71,6 +71,8 @@ const Products = ({ items }) => {
                   <Link className="title__link" to={`/productdetail/${product.id}`}>
                     <h3>{product.title}</h3>
                   </Link>
+                  <p className='category'>Man</p>
+                  <p>brand</p>
                   <p>${product.price}</p>
                 </div>
               </div>
