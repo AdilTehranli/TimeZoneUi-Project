@@ -56,7 +56,7 @@ const Products = ({ items }) => {
             <div key={index} className="col-4 products__item">
               <div className="products__item__container">
                 <div className="products__item__image">
-                  <img src={product.image} alt="" />
+                  <img src={`https://localhost:7027//${product.productImage}`} alt="" />
                   <div className="products__item__image__icon">
                   <i className="fa-regular fa-heart" onClick={() => handleLikeProduct(product)}></i>
                   </div>
@@ -71,8 +71,8 @@ const Products = ({ items }) => {
                   <Link className="title__link" to={`/productdetail/${product.id}`}>
                     <h3>{product.title}</h3>
                   </Link>
-                  <p className='category'>Man</p>
-                  <p>brand</p>
+                  <p className='category'>{product.category}</p>
+                  <p>{product.brand}</p>
                   <p>${product.price}</p>
                 </div>
               </div>
