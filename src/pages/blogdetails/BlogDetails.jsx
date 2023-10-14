@@ -10,7 +10,7 @@ const BlogDetails = () => {
     const [product, setProduct] = useState(null);
 
     useEffect(() => {
-        axios.get(`https://fakestoreapi.com/products/${id}`)
+        axios.get(`https://localhost:7027/api/Blogs/${id}`)
             .then((res) => {
                 setProduct(res.data);
             })
@@ -26,7 +26,7 @@ const BlogDetails = () => {
                         <div className="blogdetails__main col-lg-8">
                             {product && (
                                 <div>
-                                    <img src={product.image} alt={product.title} />
+                                    <img src={`https://localhost:7027//${product.blogImage}`} alt={product.title} />
                                     <div className="blogdetails__title">{product.title}</div>
                                     <p><FaComments/> (3)Comments</p>
                                     <div className="blogdetails__description">{product.description}</div>
