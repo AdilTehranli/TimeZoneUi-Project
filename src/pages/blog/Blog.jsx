@@ -11,15 +11,15 @@ const Blog = () => {
     const [q, setQ] = useState("");
     const [filteredItems, setFilteredItems] = useState([]);
 
-    // useEffect(() => {
-    //     axios.get('https://localhost:7027/api/Sliders')
-    //         .then(res => {
-    //             setItem(res.data);
-    //             setFilteredItems(res.data);  
-    //             // console.log(res.data);
-    //         })
-    //         .catch(err => console.error(err));
-    // }, []);
+    useEffect(() => {
+        axios.get('https://localhost:7027/api/Blogs')
+            .then(res => {
+                setItem(res.data);
+                setFilteredItems(res.data);  
+                // console.log(res.data);
+            })
+            .catch(err => console.error(err));
+    }, []);
 
     const handleSearch = () => {
         const filteredItems = item.filter(product =>
@@ -44,7 +44,7 @@ const Blog = () => {
                                     <div key={index} className="blog__main__item">
                                         <div className="blog__main__image">
                                          
-                                        <img src={`wwwroot/${product.sliderImage}`} alt="image" />
+                                        <img src={`https://localhost:7027//${product.blogImage}`} alt="image" />
                                             <div className="blog__main__position">
                                                 <p>15 Jan</p>
                                             </div>

@@ -70,27 +70,6 @@ const Home = () => {
               </h3>
             </div>
                 ))}
-            {/* <div>
-              <h3 style={contentStyle}>
-                <div className="slider__all d-flex">
-                  <div className="slider__title">
-                    <h1>Select Your New Perfect Style</h1>
-                    <p>
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                      laboris nisi ut aliquip ex ea <br /> commodo consequat is
-                      aute irure.
-                    </p>
-                    <button>SHOP NOW</button>
-                  </div>
-                  <div className="slider__image">
-                    <img
-                      src="	https://themewagon.github.io/timezone/assets/img/hero/watch.png"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </h3>
-            </div> */}
             <div>
               <h3 style={contentStyle}></h3>
             </div>
