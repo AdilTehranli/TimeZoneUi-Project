@@ -18,7 +18,7 @@ const Shop = () => {
   useEffect(() => {
   
     axios
-      .get('https://fakestoreapi.com/products')
+      .get('https://localhost:7027/api/Products')
       .then((res) => {
         setItems(res.data);
       })

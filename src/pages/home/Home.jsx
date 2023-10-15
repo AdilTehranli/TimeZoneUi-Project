@@ -19,7 +19,14 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [items,setItems] = useState([]);
+  const [banner,setBanner] = useState([]);
   
+  useEffect(()=>{
+    axios.get('https://localhost:7027/api/Banners')
+    .then(res=>{
+     setBanner(res.data)
+    })
+  },[])
   useEffect(() => {
     axios
       .get('https://localhost:7027/api/Products')
@@ -86,37 +93,23 @@ const Home = () => {
             <h2>New Arrivals</h2>
           </div>
           <div className="arrivals__products d-flex">
-            <div className="arrivals__product col-4">
+            {
+              banner.map((item,index)=>(
+
+            <div key={index} className="arrivals__product col-4">
               <div data-aos="zoom-in-up">
                 <img
-                  src="	https://themewagon.github.io/timezone/assets/img/gallery/new_product1.png"
+                  src={`https://localhost:7027//${item.bannerImage}`} 
                   alt=""
                 />
               </div>
 
-              <h3>Thermo Ball Etip Gloves</h3>
-              <p>$17,90</p>
+              <h3>{item.title}</h3>
+              <p>${item.price}</p>
             </div>
-            <div className="arrivals__product col-4">
-              <div data-aos="zoom-in-up">
-                <img
-                  src="		https://themewagon.github.io/timezone/assets/img/gallery/new_product2.png"
-                  alt=""
-                />
-              </div>
-              <h3>Thermo Ball Etip Gloves</h3>
-              <p>$17,90</p>
-            </div>
-            <div className="arrivals__product col-4">
-              <div data-aos="zoom-in-up">
-                <img
-                  src="		https://themewagon.github.io/timezone/assets/img/gallery/new_product3.png"
-                  alt=""
-                />
-              </div>
-              <h3>Thermo Ball Etip Gloves</h3>
-              <p>$17,90</p>
-            </div>
+              ))
+            }
+           
           </div>
         </div>
       </div>
