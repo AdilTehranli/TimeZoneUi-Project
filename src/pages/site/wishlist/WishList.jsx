@@ -41,7 +41,7 @@ const WishList = () => {
             {likedProducts.map(product => (
               <tr key={product.id}>
                 <td>
-                  <img src={product.image} alt={`Product ${product.id}`} />
+                  <img src={`https://localhost:7027//${product.productImage}`} alt={`Product ${product.id}`} />
                   <span>{product.title}</span>
                 </td>
                 <td>${product.price.toFixed(2)}</td>
