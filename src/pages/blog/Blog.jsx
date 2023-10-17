@@ -16,7 +16,6 @@ const Blog = () => {
             .then(res => {
                 setItem(res.data);
                 setFilteredItems(res.data);  
-                // console.log(res.data);
             })
             .catch(err => console.error(err));
     }, []);

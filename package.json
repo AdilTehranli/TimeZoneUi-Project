@@ -29,6 +29,7 @@
     "router": "^1.3.8",
     "sass": "^1.68.0",
     "styled-components": "^5.3.11",
+    "sweetalert2": "^11.7.32",
     "toastr": "^2.1.4",
     "web-vitals": "^2.1.4"
   },

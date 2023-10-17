@@ -96,7 +96,8 @@ const Home = () => {
             {
               banner.map((item,index)=>(
 
-            <div key={index} className="arrivals__product col-4">
+            <div key={index
+            } className="arrivals__product col-4">
               <div data-aos="zoom-in-up">
                 <img
                   src={`https://localhost:7027//${item.bannerImage}`} 
