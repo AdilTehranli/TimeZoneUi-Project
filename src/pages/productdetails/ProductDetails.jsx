@@ -55,8 +55,8 @@ toast.success("Added to the card")
   <div className="product_info col-6">
     <h2>{product.title}</h2>
     <p>${product.price}</p>
-    <p>{product.category}</p>
-    <p>{product.brand}</p>
+    <p><b>Category:</b>{product.category}</p>
+    <p><b>Brand:</b>{product.brand}</p>
     <button onClick={()=>handleAddToCart(product)}>Add To Cart</button>
     <button onClick={()=>handleLikeProduct(product)} >Add To Wishlist</button>
   </div>

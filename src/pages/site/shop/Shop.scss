@@ -6,6 +6,10 @@
             gap: 35px;
             li{
                 list-style: none;
+                cursor: pointer;
+                &:hover{
+                    color: red;
+                }
             }
            }
         }
