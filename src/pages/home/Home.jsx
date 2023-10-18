@@ -58,23 +58,24 @@ const Home = () => {
             <div>
               <h3 style={contentStyle}>
 
-                <div key={index} className="slider__all d-flex">
-                  <div className="slider__title">
-                    <div  data-aos="fade-right">
-                      <h1>{slider.title}</h1>
-                      <p>
-                        {slider.description}
-                      </p>
-                      <button>SHOP NOW</button>
-                    </div>
-                  </div>
-                  <div className="slider__image">
-                    <img
-                      src={`https://localhost:7027//${slider.sliderImage}`}
-                      alt={slider.title}
-                    />
-                  </div>
-                </div>
+              <div key={index} className="slider__all d-flex">
+  <div className="slider__title">
+    <div  data-aos="fade-right">
+      <h1>{slider.title}</h1>
+      <p>
+        {slider.description}
+      </p>
+      <button>SHOP NOW</button>
+    </div>
+  </div>
+  <div className="slider__image">
+    <img
+      src={`https://localhost:7027//${slider.sliderImage}`}
+      alt={slider.title}
+      className="slider__image__img"
+    />
+  </div>
+</div>  
               </h3>
             </div>
                 ))}
@@ -114,26 +115,26 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="gallery d-flex">
-        <div className="gallery__image__left col-6">
-          <img className="left"
-            src="https://qph.cf2.quoracdn.net/main-qimg-cbb5dff8c6b239a3caf0c2db6f23e326-lq"
-            alt=""
-          />
-        </div>
-        <div className="gallery__image__right col-6">
-          <img
-            className="gallery__image__right__middle"
-            src="https://assets.phillips.com/image/upload/t_Website_LotDetailMainImage/v1/auctions/CH080220/177_001.jpg"
-            alt=""
-          />
-          <img
-            className="gallery__image__right__end"
-            src="https://amz.luxewatches.co.uk/app/uploads/2021/09/15091140/coral-dial.jpg"
-            alt=""
-          />
-        </div>
-      </div>
+          <div className="gallery d-flex">
+            <div className="gallery__image__left col-6">
+              <img className="left"
+                src="https://qph.cf2.quoracdn.net/main-qimg-cbb5dff8c6b239a3caf0c2db6f23e326-lq"
+                alt=""
+              />
+            </div>
+            <div className="gallery__image__right col-6">
+              <img
+                className="gallery__image__right__middle"
+                src="https://assets.phillips.com/image/upload/t_Website_LotDetailMainImage/v1/auctions/CH080220/177_001.jpg"
+                alt=""
+              />
+              <img
+                className="gallery__image__right__end"
+                src="https://amz.luxewatches.co.uk/app/uploads/2021/09/15091140/coral-dial.jpg"
+                alt=""
+              />
+            </div>
+          </div>
 
       <div className="items">
         <div className="container">
