@@ -34,7 +34,7 @@ toast.success("Added to the card")
   };
   useEffect(() => {
     axios
-      .get(`https://localhost:7027/api/Products/${id}`)
+      .get(`https://localhost:7027/api/Products/GetProductDetail/${id}`)
       .then((res) => {
         setProduct(res.data);
       })
@@ -54,9 +54,10 @@ toast.success("Added to the card")
   <img className='image_prod' src={`https://localhost:7027//${product.productImage}`} alt="" />
   <div className="product_info col-6">
     <h2>{product.title}</h2>
-    <p>${product.price}</p>
-    <p><b>Category:</b>{product.category}</p>
-    <p><b>Brand:</b>{product.brand}</p>
+    <p>{product.description}</p>
+    <p><b>Price:</b> ${product.price}</p>
+    <p><b>Category:</b> {product.category}</p>
+    <p><b>Brand:</b> {product.brand}</p>
     <button onClick={()=>handleAddToCart(product)}>Add To Cart</button>
     <button onClick={()=>handleLikeProduct(product)} >Add To Wishlist</button>
   </div>

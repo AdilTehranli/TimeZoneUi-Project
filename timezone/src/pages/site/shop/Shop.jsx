@@ -22,7 +22,7 @@ const Shop = () => {
 
   useEffect(() => {
     axios
-      .get('https://localhost:7027/api/Products')
+      .get('https://localhost:7027/api/Products/GetProduct')
       .then((res) => {
         setItems(res.data);
       })

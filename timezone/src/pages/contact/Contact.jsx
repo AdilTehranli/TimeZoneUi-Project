@@ -33,7 +33,6 @@ const Contact = () => {
     headers: { Authorization: `Bearer ${token}` },
   };
 
-  //Retrieves all Contact data from the API.
   const getAllContact = async () => {
     try {
       const response = await axios.get(`${url}/api/Contacts/GetContact`);
@@ -50,15 +49,7 @@ const Contact = () => {
   const CreateContact = async (e) => {
     e.preventDefault();
 
-    // if (title.trim() === '') {
-    //     setIsTitleEmpty(true);
-    //     return;
-    // }
-
-    // if (description.trim() === '') {
-    //     setIsDescriptionEmpty(true);
-    //     return;
-    // }
+ 
 
     const formData = new FormData();
     for (const [key, value] of Object.entries(newContact)) {
@@ -122,7 +113,7 @@ const Contact = () => {
                 className="form-control mt-4"
                 id="exampleFormControlTextarea1"
                 rows="7"
-                placeholder="enter message"
+                placeholder="Enter message"
               ></textarea>
               <div className="row">
                 <div className="col-6">

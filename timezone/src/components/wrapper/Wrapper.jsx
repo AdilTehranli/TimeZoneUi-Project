@@ -7,7 +7,7 @@ const Wrapper = () => {
 
  useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('https://localhost:7027/api/Wrappers');
+      const result = await axios.get('https://localhost:7027/api/Wrappers/GetWrapper');
       setWrapper(result.data);
     };
 

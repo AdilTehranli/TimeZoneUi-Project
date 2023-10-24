@@ -22,14 +22,14 @@ const Home = () => {
   const [banner,setBanner] = useState([]);
   
   useEffect(()=>{
-    axios.get('https://localhost:7027/api/Banners')
+    axios.get('https://localhost:7027/api/Banners/GetBanner')
     .then(res=>{
      setBanner(res.data)
     })
   },[])
   useEffect(() => {
     axios
-      .get('https://localhost:7027/api/Products')
+      .get('https://localhost:7027/api/Products/GetProduct')
       .then((res) => {
         setProducts(res.data);
         setLoading(false); 
@@ -37,11 +37,11 @@ const Home = () => {
       })
       .catch((error) => {
         console.error(error);
-        setLoading(false); 
+        setLoading(false);  
       });
   }, []);
   useEffect(() => {
-    axios.get('https://localhost:7027/api/Sliders')
+    axios.get('https://localhost:7027/api/Sliders/GetSlider')
     .then(res=>{
   setItems(res.data);
     }).catch((error) =>{
