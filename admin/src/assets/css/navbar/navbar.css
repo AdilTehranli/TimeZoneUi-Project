@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 6px 72px;
-    background-color: #01574A;
+    background-color: red;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
     z-index: 999;
     right: 0;
@@ -43,7 +43,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 8px 20px !important;
-        background-color: #01574A;
+        background-color: red;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
         z-index: 999;
         right: 0;
@@ -150,7 +150,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 8px 20px !important;
-        background-color: #01574A;
+        background-color: #363636;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
         z-index: 999;
         right: 0;
@@ -252,7 +252,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 8px 20px !important;
-        background-color: #01574A;
+        background-color: #3d3d3d;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
         z-index: 999;
         right: 0;

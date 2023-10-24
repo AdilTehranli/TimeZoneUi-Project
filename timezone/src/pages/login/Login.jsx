@@ -24,9 +24,10 @@ const Login = () => {
     try {
       const config = {
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          'Content-Type': 'application/json',
         },
       };
+      
 
       const response = await axios.post(
         "https://localhost:7027/api/Auth/Login",

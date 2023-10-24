@@ -45,7 +45,7 @@ function Login() {
             showConfirmButton: true,
           });
         } else {
-          // Parse JWT token and get user role
+          
           function parseJwt(token) {
             try {
               const base64Url = token.split(".")[1];
@@ -61,7 +61,7 @@ function Login() {
               return JSON.parse(jsonPayload);
             } catch (error) {
               console.error("Error parsing JWT:", error);
-              return null; // Eğer bir hata olursa null döndürün
+              return null; 
             }
           }
           

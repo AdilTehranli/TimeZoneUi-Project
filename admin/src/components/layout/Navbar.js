@@ -68,7 +68,7 @@ function Navbar() {
         localStorage.removeItem("token");
         sessionStorage.setItem("sweetAlertMessage", "You signed out");
         window.location.reload();
-        window.location.href = "/adminLogin";
+        window.location.href = "/";
       }
       
       if (sessionStorage.getItem("sweetAlertMessage")) {
@@ -78,7 +78,7 @@ function Navbar() {
           timer: 2000,
         });
         sessionStorage.removeItem("sweetAlertMessage");
-        window.location.href = "/adminLogin";
+        window.location.href = "/";
       }
 
 
