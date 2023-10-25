@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../products/Products.scss";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slice/CartSlice";
@@ -7,21 +7,30 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addlike } from "../../redux/slice/LikeSlice";
 
-const Products = ({ items }) => {
+const Products = ({ items}) => {
   const [likedProducts, setLikedProducts] = useState([]);
   const [item, setItems] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
+  const isUserLoggedIn = !!localStorage.getItem("token");
+
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const handleAddToCart = (product) => {
-    const existingProduct = cartProducts.find((p) => p.id === product.id);
-
-    if (existingProduct) {
-      const updatedCart = cartProducts.map((p) =>
-        p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
-      );
-      setCartProducts(updatedCart);
+    if (isUserLoggedIn) {
+      const existingProduct = cartProducts.find((p) => p.id === product.id);
+  
+      if (existingProduct) {
+        const updatedCart = cartProducts.map((p) =>
+          p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+        );
+        setCartProducts(updatedCart);
+      } else {
+        dispatch(addToCart({ ...product, quantity: 1 }));
+      }
     } else {
-      dispatch(addToCart({ ...product, quantity: 1 }));
+      toast.error("Please log in to add to cart");
+      navigate('/login')
     }
   };
 

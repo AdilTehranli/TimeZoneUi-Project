@@ -15,7 +15,6 @@ function ContactTable() {
 
     const [contact, setContact] = useState([]);
 
-     //Setting Authorization Token in Request Headers using Bearer Authentication
      let token = JSON.parse(localStorage.getItem("token"));
 
      const config = {
@@ -25,7 +24,6 @@ function ContactTable() {
 
 
 
-    //Retrieves all Contact data from the API.
     const getAllContact = async () => {
         try {
             const response = await axios.get(`${url}/api/Contacts/GetContact`);
@@ -78,7 +76,7 @@ function ContactTable() {
                 <div className='col-10 mt-5'>
 
                     <h2 className='text-center mt-5'>
-                        contact Table
+                        Contact Table
 
                     </h2>
 

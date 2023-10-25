@@ -187,7 +187,7 @@ const Home = () => {
             </div>
             
             <div className="choise__left col-6">
-              <img src="	https://themewagon.github.io/timezone/assets/img/gallery/choce_watch1.png" alt="" />
+              <img src="		https://themewagon.github.io/timezone/assets/img/gallery/choce_watch2.png" alt="" />
             </div>
             <div className="choise__right col-6">
               <h2>Watch of Choice</h2>

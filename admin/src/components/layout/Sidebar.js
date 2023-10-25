@@ -58,11 +58,11 @@ function Sidebar() {
           </li>
           <li className="menu-item">
             <i className="fa fa-envelope"></i>
-            <span>Mesajlar</span>
+            <span>Message</span>
           </li>
           <li className="menu-item">
             <i className="fa fa-cog"></i>
-            <span>Ayarlar</span>
+            <span>Settings</span>
           </li>
         </ul>
       </div>

@@ -1,53 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "../../components/slider/Slider";
 import '../about/About.scss';
 import { DefaultPlayer as Video } from "react-html5video";
 import "react-html5video/dist/styles.css";
 import video from "../../assets/videos/Rolex Glidelock – Take it up a notch.mp4";
 import Wrapper from "../../components/wrapper/Wrapper";
+import axios from "axios";
 
 const About = () => {
+  const [about,setAbout]=useState([]);
+  useEffect(()=>{
+    axios.get('https://localhost:7027/api/Abouts/GetAbout')
+    .then(res=>{
+    setAbout(res.data);
+    })
+  },[])
   return (
     <div>
       <Slider title="About Us" />
 
       <div className="about">
         <div className="container">
+          {
+
+            about.map((item,index)=>(
+
           <div className="about__title">
             <h3>
-              <span></span>   Our Mission
+              <span></span> {item.title}
             </h3>
             <p className="about__desc">
-              Consectetur adipiscing elit, sued do eiusmod tempor ididunt udfgt
-              labore et dolore magna aliqua. Quis ipsum <br /> suspendisces gravida.
-              Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan
-              lacus. Risus commodo <br /> viverra sebfd dho eiusmod tempor maecenas
-              accumsan lacus.
-            </p>
-            <p>
-              Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan
-              lacus. Risus commodo viverra sebfd dho <br /> eiusmod tempor maecenas
-              accumsan.
+            {item.description}
             </p>
           </div>
+            ))
+          }
         
-          <div className="about__title">
-            <h3>
-              <span></span>   Our vision
-            </h3>
-            <p className="about__desc">
-              Consectetur adipiscing elit, sued do eiusmod tempor ididunt udfgt
-              labore et dolore magna aliqua. Quis ipsum <br /> suspendisces gravida.
-              Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan
-              lacus. Risus commodo <br /> viverra sebfd dho eiusmod tempor maecenas
-              accumsan lacus.
-            </p>
-            <p>
-              Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan
-              lacus. Risus commodo viverra sebfd dho <br /> eiusmod tempor maecenas
-              accumsan.
-            </p>
-          </div>
+
         </div>
       </div>
       <div className="video">
