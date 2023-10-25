@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Slider from '../../components/slider/Slider';
 import '../productdetails/ProductDetails.scss';
@@ -13,20 +13,25 @@ const ProductDetails = () => {
   const { id } = useParams(); 
   const [product, setProduct] = useState(null);
   const [cartProducts, setCartProducts] = useState([]);
+  const isUserLoggedIn = !!localStorage.getItem("token");
+  const navigate=useNavigate()
   const dispatch=useDispatch()
   const handleAddToCart = (product) => {
-    const existingProduct = cartProducts.find((p) => p.id === product.id);
+    if (isUserLoggedIn) {
+      const existingProduct = cartProducts.find((p) => p.id === product.id);
   
-    if (existingProduct) {
-      const updatedCart = cartProducts.map((p) =>
-        p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
-      );
-      setCartProducts(updatedCart);
+      if (existingProduct) {
+        const updatedCart = cartProducts.map((p) =>
+          p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+        );
+        setCartProducts(updatedCart);
+      } else {
+        dispatch(addToCart({ ...product, quantity: 1 }));
+      }
     } else {
-      dispatch(addToCart({ ...product, quantity: 1 }));
+      toast.error("Please log in to add to cart");
+      navigate('/login')
     }
-  
-toast.success("Added to the card")
   };
   const handleLikeProduct = (product) => {
     dispatch(addlike(product));
