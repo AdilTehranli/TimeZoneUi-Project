@@ -27,6 +27,10 @@ function Sidebar() {
             <i class="fa-regular fa-clipboard"></i>
             <Link to="/brandTable">Brand</Link>
           </li>
+          <li className="menu-item">
+            <i class="fa-regular fa-clipboard"></i>
+            <Link to="/aboutTable">About</Link>
+          </li>
 
 
        

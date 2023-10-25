@@ -1,80 +1,74 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import Sidebar from '../../components/layout/Sidebar';
+import Sidebar from '../../components/layout/Sidebar'
 
-function BlogUpdate() {
-
-    const { id } = useParams();
+function AboutCreate() {
 
     const navigate = useNavigate();
-
     const url = 'https://localhost:7027';
 
-    const [blog, setBlog] = useState([]);
-    const [blogimage, setBlogImage] = useState();
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    const [about, setAbout] = useState([]);
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [isNameEmpty, setIsNameEmpty] = useState(false);
 
-    //Setting Authorization Token in Request Headers using Bearer AuthenticagetBlogtion
     let token = JSON.parse(localStorage.getItem("token"));
 
     const config = {
         headers: { Authorization: `Bearer ${token}` },
     };
 
+    //Get All Category API
 
-
-    //Get  by id Blog  from API
-
-    const getBlog = async () => {
+    const getAllAbout = async () => {
         try {
-            const response = await axios.get(`${url}/api/Blogs/${id}`);
-            setBlog(response.data);
-            setBlogImage(response.data.image);
-            setTitle(response.data.title);
-            setDescription(response.data.description);
+            const response = await axios.get(`${url}/api/Abouts/GetAbout`, config);
+            setAbout(response.data);
         } catch (error) {
-            if (error.response) {
-                if (error.response.status === 404) {
-                    window.location.href = '/404';
-                } else if (error.response.status === 400) {
-                    window.location.href = '/400';
-                }
-            } else {
-                console.error(error);
-            }
+            console.error(error);
         }
     };
 
-
     useEffect(() => {
-        getBlog();
+        getAllAbout();
     }, []);
 
-    const newBlog = {
-        blogimage: blogimage,
+
+    const newCategory = {
+
         title: title,
-        description: description
+        description:description
     };
-    const UpdateBlog = async (e) => {
+
+
+
+
+
+    const CreateAbout = async (e) => {
         e.preventDefault();
 
-        // const formData = new FormData();
-        // for (const [key, value] of Object.entries(newBlog)) {
-        //     formData.append(key, value);
-        // };
+        if (title.trim() === '') {
+            setIsNameEmpty(true);
+            return;
+        }
+        if (description.trim() === '') {
+            setIsNameEmpty(true);
+            return;
+        }
+
+
+
         const formData = new FormData();
-        formData.append("blogimage", blogimage);
-        formData.append("title", title);
-        formData.append("description", description);
-        
-        await axios.put(`${url}/api/Blogs/${id}`, formData, config, {
+        for (const [key, value] of Object.entries(newCategory)) {
+            formData.append(key, value);
+        };
+
+        await axios.post(`${url}/api/Abouts/CreateAbout`, formData, config, {
             headers: {
-                ...config.headers,
                 Accept: "*/*"
             }
         })
@@ -82,25 +76,29 @@ function BlogUpdate() {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'success',
-                    title: 'Blog Updated',
+                    title: 'Category Created',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(res);
+                navigate('/aboutTable');
             })
             .catch((err) => {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'error',
-                    title: 'Blog not Updated',
+                    title: 'Category not Created',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(err);
+                navigate('/aboutCreate');
             });
 
-        navigate('/blogTable');
+
     };
+
+  
 
 
 
@@ -111,56 +109,53 @@ function BlogUpdate() {
 
             <div className='d-flex'>
 
-
                 <div className='col-2'>
 
                     <Sidebar />
 
                 </div>
 
+
                 <div className='col-10 mt-5'>
+
                     <div className="create-btn-area container" style={{ maxWidth: "500px" }}>
-                        <h2 className='my-5' style={{ textAlign: "center" }}>Update Blog</h2>
-                        <Form onSubmit={(e) => UpdateBlog(e)}>
-                            <p>Image</p>
-                 
+                        <h2 className='my-5' style={{ textAlign: "center" }}>Create About</h2>
+                        <Form onSubmit={(e) => CreateAbout(e)}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control
-                                    type="file"
-                                    onChange={(e) => setBlogImage(e.target.files[0])} 
-                                />
+                             
+                               
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label>Title</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name='title'
-                                    placeholder={title}
+                                    placeholder="Enter title"
+                                    required
                                     onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = title}
+                                    onBlur={(e) => e.target.placeholder = 'Enter title'}
                                     onChange={(e) => setTitle(e.target.value)}
                                 />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    as="textarea" 
-                                    rows={3} 
-                                    name='description'
-                                    placeholder={description}
+                                    placeholder="Enter description"
+                                    required
                                     onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = description}
+                                    onBlur={(e) => e.target.placeholder = 'Enter description'}
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
                             </Form.Group>
 
+
+
                             <Button variant="outline-primary" type="submit">
-                                Update
+                                Create
                             </Button>
-                            <Link to="/blogTable">
+                            <Link to="/aboutTable">
                                 <Button variant="outline-dark" type="submit" className='mx-2'>
                                     Cancel
                                 </Button>
@@ -169,11 +164,16 @@ function BlogUpdate() {
                     </div>
 
 
+
                 </div>
+
+
             </div>
+
+
 
         </>
     )
 }
 
-export default BlogUpdate
+export default AboutCreate

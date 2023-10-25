@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home'
 import Contact from './pages/Contact'
 import About from './pages/About'
+import AboutTable from'./pages/about/AboutTable'
+import AboutCreate from'./pages/about/AboutCreate'
+import AboutUpdate from'./pages/about/AboutUpdate'
+
 import Employees from './pages//Employees'
 import EmployeeDetail from './components/admin/employee/EmployeeDetail';
 
@@ -67,6 +71,10 @@ function App() {
           <Route path="*" element={<NotFound404 />} />
           <Route path="/404" element={<NotFound404 />} />
           <Route path="/400" element={<BadRequset400 />} />
+
+          <Route path="/aboutTable" element={<AboutTable/>} />
+          <Route path="/aboutCreate" element={<AboutCreate />} />
+          <Route path="/aboutUpdate/:id" element={<AboutUpdate />} />
 
           <Route path="/banner" element={<BannerTable />} />
           <Route path="/banner/detail/:id" element={<BannerDetail />} />
