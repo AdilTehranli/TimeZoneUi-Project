@@ -3,6 +3,8 @@ import './CartList.scss';
 import { Link } from 'react-router-dom';
 import Slider from '../../components/slider/Slider';
 import { useSelector, useDispatch } from 'react-redux';
+import { BsTrash } from 'react-icons/bs';
+import { ToastContainer, toast } from 'react-toastify';
 
 const CartList = () => {
   const [items, setItems] = useState([]);  
@@ -38,6 +40,15 @@ const CartList = () => {
     }
   };
   
+  const handleRemoveProduct = (productId) => {
+    const updatedCart = cartProducts.filter((product) => product.id !== productId);
+    setCartProducts(updatedCart);
+    
+    const storedCartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+    const updatedStoredCart = storedCartProducts.filter((product) => product.id !== productId);
+    localStorage.setItem('cartProducts', JSON.stringify(updatedStoredCart));
+
+  };
   
   
   const calculateTotal = () => {
@@ -84,8 +95,13 @@ const CartList = () => {
                 <span>{product.quantity}</span>
                 <button onClick={() => handleQuantityChange(product.id, product.quantity + 1)}>+</button>
               </div>
-              <div className="product__total">
+              <div className="product__total d-flex">
                 <p>Total: ${calculateProductTotal(product)}</p>
+                <BsTrash className="trash"        onClick={() => {
+          handleRemoveProduct(product.id);
+          toast.success("Product deleted"); 
+        }}
+/>
               </div>
             </div>
           ))}
@@ -97,6 +113,16 @@ const CartList = () => {
           <button className="checkout-button"> Go To Checkout</button>
         </Link>
       </div>
+      <ToastContainer      position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light" />
     </div>
   );
 };
