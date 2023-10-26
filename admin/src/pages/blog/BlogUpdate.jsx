@@ -19,7 +19,6 @@ function BlogUpdate() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
-    //Setting Authorization Token in Request Headers using Bearer AuthenticagetBlogtion
     let token = JSON.parse(localStorage.getItem("token"));
 
     const config = {
@@ -28,7 +27,6 @@ function BlogUpdate() {
 
 
 
-    //Get  by id Blog  from API
 
     const getBlog = async () => {
         try {
@@ -63,10 +61,7 @@ function BlogUpdate() {
     const UpdateBlog = async (e) => {
         e.preventDefault();
 
-        // const formData = new FormData();
-        // for (const [key, value] of Object.entries(newBlog)) {
-        //     formData.append(key, value);
-        // };
+
         const formData = new FormData();
         formData.append("blogimage", blogimage);
         formData.append("title", title);

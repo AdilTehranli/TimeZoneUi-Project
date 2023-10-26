@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const likeSlice = createSlice({
   name: 'likeslice',
   initialState: {
-    list:JSON.parse(localStorage.getItem('likeProducts')) || []
+    list: JSON.parse(localStorage.getItem('likeProducts')) || []
   },
   reducers: {
     addlike: (state, action) => {
@@ -14,9 +14,14 @@ const likeSlice = createSlice({
         state.list.push(likeadd);
       }
       localStorage.setItem('likeProducts', JSON.stringify(state.list));
+    },
+    removeLike: (state, action) => {
+      const productId = action.payload;
+      state.list = state.list.filter(item => item.id !== productId);
+      localStorage.setItem('likeProducts', JSON.stringify(state.list));
     }
   }
 });
 
-export const { addlike } = likeSlice.actions;
+export const { addlike, removeLike } = likeSlice.actions;
 export default likeSlice.reducer;

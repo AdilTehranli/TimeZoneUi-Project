@@ -7,39 +7,50 @@ import PriceRange from '../../../components/pricerange/PriceRange';
 import axios from 'axios';
 
 const Shop = () => {
-  const [priceRange, setPriceRange] = useState([1, 1000]);
-  const [items, setItems] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('All'); 
+ const [priceRange, setPriceRange] = useState([1, 1000]);
+ const [items, setItems] = useState([]);
+ const [filteredProducts, setFilteredProducts] = useState([]);
+ const [selectedCategory, setSelectedCategory] = useState('All'); 
 
-  const handlePriceChange = (range) => {
+ const handlePriceChange = (range) => {
     setPriceRange(range);
-  };
+ };
+ const handleCategoryChange = (category) => {
+  console.log('Selected Category:', category);
+  setSelectedCategory(category);
+};
 
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-  };
+ useEffect(() => {
+  axios
+    .get('https://localhost:7027/api/Products/GetProduct')
+    .then((res) => {
+      console.log('Data received from API:', res.data);
+      setItems(res.data);
+    })
+    .catch((error) => {
+      console.error(error);
+      setItems([]);
+    });
+}, []);
+useEffect(() => {
+  console.log('Price Range:', priceRange);
+  console.log('Selected Category:', selectedCategory);
 
-  useEffect(() => {
-    axios
-      .get('https://localhost:7027/api/Products/GetProduct')
-      .then((res) => {
-        setItems(res.data);
-      })
-      .catch((error) => console.error(error));
-  }, []);
+  let filteredItems = items.filter(
+    (item) => item.price >= priceRange[0] && item.price <= priceRange[1]
+  );
 
-  useEffect(() => {
-    let filteredItems = items.filter(
-      (item) => item.price >= priceRange[0] && item.price <= priceRange[1]
-    );
+  if (selectedCategory !== 'All') {
+    filteredItems = filteredItems.filter((item) => item.category === selectedCategory);
+  }
 
-    if (selectedCategory !== 'All') {
-      filteredItems = filteredItems.filter((item) => item.category === selectedCategory);
-    }
-
+  if (selectedCategory === 'All' && priceRange[0] === 1 && priceRange[1] === 1000) {
+    setFilteredProducts(items);
+  } else {
     setFilteredProducts(filteredItems);
-  }, [priceRange, items, selectedCategory]);
+  }
+}, [priceRange, items, selectedCategory]);
+
 
   return (
     <div>
@@ -70,7 +81,11 @@ const Shop = () => {
             <PriceRange onPriceChange={handlePriceChange} />
           </div>
           <div className="col-10">
-            <Products items={filteredProducts} />
+          {filteredProducts.length === 0 ? (
+  <p>No products in the selected category.</p>
+) : (
+  <Products items={filteredProducts} />
+)}
           </div>
         </div>
         <Wrapper />

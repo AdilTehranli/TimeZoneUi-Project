@@ -4,7 +4,9 @@ import './WishList.scss';
 import Slider from '../../../components/slider/Slider';
 import { addToCart } from '../../../redux/slice/CartSlice';
 import { toast } from 'react-toastify';
+import { BsTrash } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import { removeLike } from '../../../redux/slice/LikeSlice';
 
 const WishList = () => {
   const [cartProducts, setCartProducts] = useState([])
@@ -54,6 +56,7 @@ const navigate=useNavigate()
                 <td>${product.price.toFixed(2)}</td>
                 <td>
                   <button className="wishlist-add-to-cart-button" onClick={()=>handleAddToCart(product)}>Add to Cart</button>
+                  <BsTrash className="trash" onClick={() => dispatch(removeLike(product.id))} style={{cursor:'pointer'}} />
                 </td>
               </tr>
             ))}
