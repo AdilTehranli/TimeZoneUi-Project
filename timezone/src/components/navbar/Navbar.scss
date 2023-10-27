@@ -62,7 +62,7 @@
           .navbar__user__hover {
             position: absolute;
             background-color: white;
-            padding: 0px;
+            padding: 0;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             opacity: 0;
@@ -73,35 +73,41 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-      
+          
             .user__text {
               display: none;
-              .user-name{
-                margin: auto;
-    padding-left: 30px;
-    padding-right: 5px;
+          
+              .user-name {
+                text-align: center;
               }
             }
-            ul{
-              li{
-                  list-style: none;
-                  margin-right: 20px;
-                .hover__link{
+          
+            ul {
+              list-style: none;
+              margin: 0;
+              padding: 0;
+          
+              li {
+                margin-right: 20px;
+                .hover__link {
+                  margin-left: 20px;
                   text-decoration: none;
+                  margin-top: 10px;
                   color: black;
-                  &:hover{
+          
+                  &:hover {
                     color: red;
-                    
                   }
+          
                   p {
-                  margin: 5px 0;
-                  cursor: pointer;
-                  
+                    margin: 5px 0;
+                    cursor: pointer;
+                  }
                 }
-              }
               }
             }
           }
+          
       
           &:hover .navbar__user__hover {
             opacity: 1;

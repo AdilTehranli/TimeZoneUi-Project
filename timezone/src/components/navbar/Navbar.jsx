@@ -48,8 +48,7 @@ const Navbar = () => {
       : null;
   }
 
-  //   console.log("Parsed token:", parseJwt(currentToken));
-  // console.log("Current user:", currentUser);
+
   function handleLogout() {
     localStorage.removeItem("token");
     sessionStorage.setItem("sweetAlertMessage", "You signed out");
