@@ -5,6 +5,7 @@ import Slider from '../../components/slider/Slider';
 import { useSelector, useDispatch } from 'react-redux';
 import { BsTrash } from 'react-icons/bs';
 import { ToastContainer, toast } from 'react-toastify';
+import { removeFromCart } from '../../redux/slice/CartSlice';
 
 const CartList = () => {
   const [items, setItems] = useState([]);  
@@ -39,16 +40,17 @@ const CartList = () => {
       return "0.00"; 
     }
   };
-  
   const handleRemoveProduct = (productId) => {
     const updatedCart = cartProducts.filter((product) => product.id !== productId);
     setCartProducts(updatedCart);
-    
+  
     const storedCartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
     const updatedStoredCart = storedCartProducts.filter((product) => product.id !== productId);
     localStorage.setItem('cartProducts', JSON.stringify(updatedStoredCart));
-
+  
+    dispatch(removeFromCart(productId));
   };
+  
   
   
   const calculateTotal = () => {
@@ -60,20 +62,23 @@ const CartList = () => {
     });
     return total.toFixed(2);
   };
-  
 
   useEffect(() => {
-    setCartProducts(cart || []); 
+    // Redux'dan gelen sepet bilgisini set edin
+    setCartProducts(cart || []);
   }, [cart]);
+
   useEffect(() => {
     const storedCartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
     setCartProducts(storedCartProducts);
-  }, []); 
+  }, []);
   
   useEffect(() => {
+    // Herhangi bir değişiklik olduğunda localStorage'a güncel sepet bilgisini kaydedin
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
     calculateTotal();
-  }, [cartProducts]); 
+  }, [cartProducts]);
+
   
   return (
     <div>

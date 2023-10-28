@@ -143,7 +143,7 @@ const Navbar = () => {
               </div>
               <Link className="icon__link" to={"/cartlist"}>
                 <SlBasket className="shop__icon" />
-                <span>{totalItems}</span>
+                <sup>{totalItems}</sup>
               </Link>
               <Link className="icon__link" to={"/wishlist"}>
                 <AiOutlineHeart className="shop__icon" />
