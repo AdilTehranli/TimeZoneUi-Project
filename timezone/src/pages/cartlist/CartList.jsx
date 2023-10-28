@@ -64,7 +64,6 @@ const CartList = () => {
   };
 
   useEffect(() => {
-    // Redux'dan gelen sepet bilgisini set edin
     setCartProducts(cart || []);
   }, [cart]);
 
@@ -73,9 +72,7 @@ const CartList = () => {
     setCartProducts(storedCartProducts);
   }, []);
   
-  useEffect(() => {
-    // Herhangi bir değişiklik olduğunda localStorage'a güncel sepet bilgisini kaydedin
-    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+  useEffect(() => {    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
     calculateTotal();
   }, [cartProducts]);
 
