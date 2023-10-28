@@ -1,7 +1,16 @@
-// body{
-//   scroll-padding-top: 1.5rem;
-// }
-  .navbar {
+
+.navbar {
+  position: relative;
+
+  &.sticky {
+    position: fixed;
+    top: 0;
+    background-color: white;
+    z-index: 9;
+    width: 100%;
+    padding-bottom: 40px;
+
+  }
     .navbar__all {
       display: flex;
       
@@ -10,7 +19,7 @@
         margin-top: 40px;
         
     
-      .navbar__orderlist {
+      .navbar__orderlist {  
         ul {
           display: flex;
           margin: 0;

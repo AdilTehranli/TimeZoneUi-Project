@@ -30,8 +30,8 @@ const CartList = () => {
       updatedCart.push({ ...productToAdd, quantity: 1 });
     }
   
-    setCartProducts(updatedCart);
     calculateTotal();
+    setCartProducts(updatedCart);
   };
   const calculateProductTotal = (product) => {
     if (product && typeof product.price === 'number' && typeof product.quantity === 'number') {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../navbar/Navbar.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -12,6 +12,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const [isSticky, setIsSticky] = useState(false);
   const totalItems = useSelector((state) => state.cart.totalItems);
   const [username, setUsername] = useState("");
 
@@ -63,10 +64,26 @@ const Navbar = () => {
     });
     sessionStorage.removeItem("sweetAlertMessage");
   }
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
+    
     <div>
-      <nav className="navbar">
+  <nav className={`navbar ${isSticky ? "sticky" : ""}`}>
         <div className="container">
           <div className="navbar__all">
             <div className="navbar__logo">
