@@ -88,8 +88,9 @@ const CartList = () => {
                 <img src={`https://localhost:7027//${product.productImage}`} alt={product.title} width="100" />
                 <div className="product-details">
                   <h3>{product.title}</h3>
-                  <p className='category'>Man</p>
-                  <p>${product.price}</p>
+                  <p className='category'>{product.category}</p>
+                  <p className='brand'>{product.brand}</p>
+                  <p >${product.price}</p>
                 </div>
               </div>
               <div className="quantity">

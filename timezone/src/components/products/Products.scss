@@ -3,7 +3,6 @@
   
     .products__item {
       margin-top: 35px;
-  
       .products__item__image {
         position: relative;
         text-align: center;
@@ -77,12 +76,36 @@
     }
   }
   
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
     .products{
-        .container{
-            .row{
-                flex-direction: column;
+       .products__item{
+         gap: 20px;
+        .products__item__container{
+          .products__item__image{
+            height: 283px;
+            width: 266px;
+            img{
+              width: 266px;
             }
+          }
         }
+       }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .products{
+       .products__item{
+         gap: 20px;
+         .products__item__container{
+          flex-direction: column;
+          .products__item__image{
+            height: 283px;
+            width: 266px;
+            img{
+              width: 266px;
+            }
+          }
+        }
+       }
     }
   }

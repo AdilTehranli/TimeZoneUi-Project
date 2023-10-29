@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addlike } from "../../redux/slice/LikeSlice";
 
-const Products = ({ items}) => {
+const Products = ({ items }) => {
   const [likedProducts, setLikedProducts] = useState([]);
   const [item, setItems] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
@@ -19,7 +19,7 @@ const Products = ({ items}) => {
   const handleAddToCart = (product) => {
     if (isUserLoggedIn) {
       const existingProduct = cartProducts.find((p) => p.id === product.id);
-  
+
       if (existingProduct) {
         const updatedCart = cartProducts.map((p) =>
           p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
@@ -30,7 +30,7 @@ const Products = ({ items}) => {
       }
     } else {
       toast.error("Please log in to add to cart");
-      navigate('/login')
+      navigate("/login");
     }
   };
 
@@ -60,7 +60,7 @@ const Products = ({ items}) => {
       <div className="container">
         <div className="row">
           {item.map((product, index) => (
-            <div key={index} className="col-4 products__item">
+            <div key={index} className="products__item col-4 ">
               <div className="products__item__container">
                 <div className="products__item__image">
                   <img
