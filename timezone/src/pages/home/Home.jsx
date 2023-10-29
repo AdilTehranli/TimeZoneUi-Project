@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "../home/Home.scss";
 import { Carousel } from "antd";
 import Products from "../../components/products/Products";
@@ -18,67 +18,64 @@ const Home = () => {
   };
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
-  const [items,setItems] = useState([]);
-  const [banner,setBanner] = useState([]);
-  
-  useEffect(()=>{
-    axios.get('https://localhost:7027/api/Banners/GetBanner')
-    .then(res=>{
-     setBanner(res.data)
-    })
-  },[])
+  const [items, setItems] = useState([]);
+  const [banner, setBanner] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://localhost:7027/api/Banners/GetBanner").then((res) => {
+      setBanner(res.data);
+    });
+  }, []);
   useEffect(() => {
     axios
-      .get('https://localhost:7027/api/Products/GetProduct')
+      .get("https://localhost:7027/api/Products/GetProduct")
       .then((res) => {
         setProducts(res.data);
-        setLoading(false); 
-  
+        setLoading(false);
       })
       .catch((error) => {
         console.error(error);
-        setLoading(false);  
+        setLoading(false);
       });
   }, []);
   useEffect(() => {
-    axios.get('https://localhost:7027/api/Sliders/GetSlider')
-    .then(res=>{
-  setItems(res.data);
-    }).catch((error) =>{
-      console.error(error);
-      setLoading(false); 
-    })
-  },[])
+    axios
+      .get("https://localhost:7027/api/Sliders/GetSlider")
+      .then((res) => {
+        setItems(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
+  }, []);
   return (
     <div className="section">
       <div className="sliders ">
         <div className="container">
           <Carousel afterChange={onChange}>
-                {items.map((slider,index)=>(
-            <div>
-              <h3 style={contentStyle}>
-
-              <div key={index} className="slider__all d-flex">
-  <div className="slider__title">
-    <div  data-aos="fade-right">
-      <h1>{slider.title}</h1>
-      <p>
-        {slider.description}
-      </p>
-      <button>SHOP NOW</button>
-    </div>
-  </div>
-  <div className="slider__image">
-    <img
-      src={`https://localhost:7027//${slider.sliderImage}`}
-      alt={slider.title}
-      className="slider__image__img"
-    />
-  </div>
-</div>  
-              </h3>
-            </div>
-                ))}
+            {items.map((slider, index) => (
+              <div>
+                <h3 style={contentStyle}>
+                  <div key={index} className="slider__all d-flex">
+                    <div className="slider__title">
+                      <div data-aos="fade-right">
+                        <h1>{slider.title}</h1>
+                        <p>{slider.description}</p>
+                        <button>SHOP NOW</button>
+                      </div>
+                    </div>
+                    <div className="slider__image">
+                      <img
+                        src={`https://localhost:7027//${slider.sliderImage}`}
+                        alt={slider.title}
+                        className="slider__image__img"
+                      />
+                    </div>
+                  </div>
+                </h3>
+              </div>
+            ))}
             <div>
               <h3 style={contentStyle}></h3>
             </div>
@@ -89,52 +86,50 @@ const Home = () => {
         </div>
       </div>
       <div className="container">
-        <div className="arrivals">
-          <div className="arrivals__title">
-            <h2>New Arrivals</h2>
-          </div>
-          <div className="arrivals__products d-flex">
-            {
-              banner.map((item,index)=>(
-
-            <div key={index
-            } className="arrivals__product col-4">
-              <div data-aos="zoom-in-up">
-                <img
-                  src={`https://localhost:7027//${item.bannerImage}`} 
-                  alt=""
-                />
-              </div>
-
-              <h3>{item.title}</h3>
-              <p>${item.price}</p>
+        <div className="row">
+          <div className="arrivals">
+            <div className="arrivals__title">
+              <h2>New Arrivals</h2>
             </div>
-              ))
-            }
-           
+            <div className="arrivals__products d-flex ">
+              {banner.map((item, index) => (
+                <div key={index} className="arrivals__product col-4 ">
+                  <div data-aos="zoom-in-up">
+                    <img className=""
+                      src={`https://localhost:7027//${item.bannerImage}`}
+                      alt=""
+                    />
+                  </div>
+
+                  <h3>{item.title}</h3>
+                  <p>${item.price}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-          <div className="gallery d-flex">
-            <div className="gallery__image__left col-6">
-              <img className="left"
-                src="https://qph.cf2.quoracdn.net/main-qimg-cbb5dff8c6b239a3caf0c2db6f23e326-lq"
-                alt=""
-              />
-            </div>
-            <div className="gallery__image__right col-6">
-              <img
-                className="gallery__image__right__middle"
-                src="https://assets.phillips.com/image/upload/t_Website_LotDetailMainImage/v1/auctions/CH080220/177_001.jpg"
-                alt=""
-              />
-              <img
-                className="gallery__image__right__end"
-                src="https://amz.luxewatches.co.uk/app/uploads/2021/09/15091140/coral-dial.jpg"
-                alt=""
-              />
-            </div>
-          </div>
+      <div className="gallery d-flex">
+        <div className="gallery__image__left col-6">
+          <img
+            className="left"
+            src="https://qph.cf2.quoracdn.net/main-qimg-cbb5dff8c6b239a3caf0c2db6f23e326-lq"
+            alt=""
+          />
+        </div>
+        <div className="gallery__image__right col-6">
+          <img
+            className="gallery__image__right__middle"
+            src="https://assets.phillips.com/image/upload/t_Website_LotDetailMainImage/v1/auctions/CH080220/177_001.jpg"
+            alt=""
+          />
+          <img
+            className="gallery__image__right__end"
+            src="https://amz.luxewatches.co.uk/app/uploads/2021/09/15091140/coral-dial.jpg"
+            alt=""
+          />
+        </div>
+      </div>
 
       <div className="items">
         <div className="container">
@@ -147,24 +142,19 @@ const Home = () => {
             </p>
           </div>
           <div>
-     
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <Products items={products} />
-      )}
-    </div>
+            {loading ? <div>Loading...</div> : <Products items={products} />}
+          </div>
 
           <div className="items__btn">
-            <Link to={'/shop'}>
-            <button>VIEW MORE PRODUCTS</button>
+            <Link to={"/shop"}>
+              <button>VIEW MORE PRODUCTS</button>
             </Link>
           </div>
         </div>
       </div>
 
       <div className="video">
-        <Video >
+        <Video>
           <source src={video} type="video/webm" />
         </Video>
       </div>
@@ -174,36 +164,42 @@ const Home = () => {
             <div className="choise__right col-6">
               <h2>Watch of Choice</h2>
               <p>
-                Enim ad minim veniam, quis nostrud exercitation ullamco <br /> laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute <br /> irure dolor
-                in reprehenderit in voluptate velit esse.
+                Enim ad minim veniam, quis nostrud exercitation ullamco <br />{" "}
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute{" "}
+                <br /> irure dolor in reprehenderit in voluptate velit esse.
               </p>
-              <Link to={'/shop'}>
-              <button>SHOW WATCHES</button>
+              <Link to={"/shop"}>
+                <button>SHOW WATCHES</button>
               </Link>
             </div>
-            <div className="choise__left col-6">
-              <img src="	https://themewagon.github.io/timezone/assets/img/gallery/choce_watch1.png" alt="" />
+            <div className="choise__left col-6 col-md-2">
+              <img
+                src="	https://themewagon.github.io/timezone/assets/img/gallery/choce_watch1.png"
+                alt=""
+              />
             </div>
-            
+
             <div className="choise__left col-6">
-              <img src="		https://themewagon.github.io/timezone/assets/img/gallery/choce_watch2.png" alt="" />
+              <img
+                src="		https://themewagon.github.io/timezone/assets/img/gallery/choce_watch2.png"
+                alt=""
+              />
             </div>
             <div className="choise__right col-6">
               <h2>Watch of Choice</h2>
               <p>
-                Enim ad minim veniam, quis nostrud exercitation ullamco <br /> laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute <br /> irure dolor
-                in reprehenderit in voluptate velit esse.
+                Enim ad minim veniam, quis nostrud exercitation ullamco <br />{" "}
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute{" "}
+                <br /> irure dolor in reprehenderit in voluptate velit esse.
               </p>
-              <Link to={'/shop'}>
-              <button>SHOW WATCHES</button>
+              <Link to={"/shop"}>
+                <button>SHOW WATCHES</button>
               </Link>
             </div>
           </div>
         </div>
       </div>
-      <Wrapper/>
+      <Wrapper />
     </div>
   );
 };

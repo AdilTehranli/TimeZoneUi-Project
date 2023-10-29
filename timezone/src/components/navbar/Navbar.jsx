@@ -5,6 +5,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { SlBasket } from "react-icons/sl";
 import { useSelector } from "react-redux";
 
@@ -75,7 +76,7 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => {
+    return () => { 
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -168,7 +169,7 @@ const Navbar = () => {
             </div>
 
             <div className="bar">
-              <i class="fa-solid fa-bars"></i>
+            <RxHamburgerMenu className="bar_icon"/>
             </div>
           </div>
         </div>

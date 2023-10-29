@@ -21,3 +21,11 @@
     }
    }
 }
+@media screen and (max-width: 768px) {
+    .wrapper{
+        .wrapper__texts{
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+    }
+}
