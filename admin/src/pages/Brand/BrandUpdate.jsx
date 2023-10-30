@@ -14,9 +14,8 @@ function BrandUpdate() {
     const url = 'https://localhost:7027';
 
     const [brand, setBrand] = useState([]);
-    const [name, setName] = useState();
+    const [Name, setName] = useState();
 
-    //Setting Authorization Token in Request Headers using Bearer AuthenticagetAdvertisingtion
     let token = JSON.parse(localStorage.getItem("token"));
 
     const config = {
@@ -51,7 +50,7 @@ function BrandUpdate() {
     }, []);
 
     const newBrand = {
-        name: name,
+        Name: Name,
     };
 
     const UpdateBrand = async (e) => {
@@ -117,10 +116,10 @@ function BrandUpdate() {
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name={name}
-                                    placeholder={name}
+                                    name={Name}
+                                    placeholder={Name}
                                     onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = name}
+                                    onBlur={(e) => e.target.placeholder = Name}
                                     onChange={(e) => setName(e.target.value)}
                                 />
                             </Form.Group>
