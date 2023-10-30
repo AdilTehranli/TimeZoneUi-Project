@@ -15,11 +15,13 @@ function ProductDetail() {
 
 
 
-    const getById = async (id) => {
+    const getById = async () => {
         try {
             const response = await axios.get(`${baseURL}/api/Products/GetProductDetail/${id}`);
             setProduct(response.data);
         getCategoryById(response.data.categoryId)
+        getBrandById(response.data.brandId)
+
 
         } catch (error) {
             console.log(error)
@@ -36,9 +38,9 @@ function ProductDetail() {
     };
 
 
-    const getCategoryById = async (categoryId) => {
+    const getCategoryById = async () => {
         try {
-            const response = await axios.get(`${baseURL}/api/Categories/GetCategoryDetail/${categoryId}`);
+            const response = await axios.get(`${baseURL}/api/Categories/GetCategoryDetail/${id}`);
             setCategory(response.data);
             console.log(response.data)
         } catch (error) {
@@ -54,10 +56,10 @@ function ProductDetail() {
             }
         }
     };
-    const getBrandById = async (categoryId) => {
+    const getBrandById = async () => {
         try {
-            const response = await axios.get(`${baseURL}/api/Brands/GetBrandDetail/${categoryId}`);
-            setCategory(response.data);
+            const response = await axios.get(`${baseURL}/api/Brands/GetBrandDetail/${id}`);
+            setBrand(response.data);
             console.log(response.data)
         } catch (error) {
             if (error.response) {
@@ -78,8 +80,8 @@ function ProductDetail() {
 
     useEffect(() => {
         getById(id);
-        getCategoryById(id);
-        getBrandById(id);
+        getCategoryById(id)
+        getBrandById(id)
     }, []);
 
 

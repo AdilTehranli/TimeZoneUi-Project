@@ -15,9 +15,8 @@ function CategoryUpdate() {
     const url = 'https://localhost:7027';
 
     const [category, setCategory] = useState([]);
-    const [name, setName] = useState();
+    const [Name, setName] = useState();
 
-    //Setting Authorization Token in Request Headers using Bearer Authentication
     let token = JSON.parse(localStorage.getItem("token"));
 
     const config = {
@@ -52,7 +51,7 @@ function CategoryUpdate() {
     }, []);
 
     const newCategory = {
-        name: name,
+        Name: Name,
 
     };
 
@@ -121,10 +120,10 @@ function CategoryUpdate() {
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name={name}
-                                    placeholder={name}
+                                    name={Name}
+                                    placeholder={Name}
                                     onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = name}
+                                    onBlur={(e) => e.target.placeholder = Name}
                                     onChange={(e) => setName(e.target.value)}
                                 />
                             </Form.Group>
