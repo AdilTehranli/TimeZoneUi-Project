@@ -15,12 +15,10 @@ function BannerUpdate() {
   const url = 'https://localhost:7027';
 
   const [banner, setBanner] = useState([]);
-  const [image, setImage] = useState();
-  const [showImage, setShowImage] = useState(null);
-  const [title, setTitle] = useState();
-  const [description, setDescription] = useState();
+  const [BannerImage, setBannerImage] = useState();
+  const [Title, setTitle] = useState();
+  const [Price, setPrice] = useState();
 
- //Setting Authorization Token in Request Headers using Bearer Authentication
   let token = JSON.parse(localStorage.getItem("token"));
 
   const config = {
@@ -32,11 +30,11 @@ function BannerUpdate() {
   //Get  by id Banner  from API
   const getBanner = async () => {
     try {
-      const response = await axios.get(`${url}/api/banner/GetById/${id}`);
+      const response = await axios.get(`${url}/api/Banners/GetBannerDetail/${id}`);
       setBanner(response.data);
-      setImage(response.data.image);
+      setBannerImage(response.data.bannerimage);
       setTitle(response.data.title);
-      setDescription(response.data.description);
+      setPrice(response.data.price);
     } catch (error) {
       if (error.response) {
         if (error.response.status === 404) {
@@ -57,9 +55,9 @@ function BannerUpdate() {
   }, []);
 
   const newBanner = {
-    photo: image,
-    title: title,
-    description: description
+    BannerImage: BannerImage,
+    Title: Title,
+    Price: Price
   };
 
   const UpdateBanner = async (e) => {
@@ -70,7 +68,7 @@ function BannerUpdate() {
       formData.append(key, value);
     };
 
-    await axios.put(`${url}/api/Banner/Update/${id}`, formData,config, {
+    await axios.put(`${url}/api/Banners/UpdateBanner/${id}`, formData,config, {
       headers: {
         Accept: "*/*"
       }
@@ -100,13 +98,6 @@ function BannerUpdate() {
   };
 
 
-  //File Upload Handler: Setting Image and Displaying Preview
-  const fileUploadHandler = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
-    setShowImage(URL.createObjectURL(file));
-};
-
 
   return (
 
@@ -125,23 +116,10 @@ function BannerUpdate() {
             <h2 className='my-5' style={{ textAlign: "center" }}>Update Banner</h2>
             <Form onSubmit={(e) => UpdateBanner(e)}>
                 <p>Image</p>
-                {
-                     image !== null ?
-                     <img
-                         style={{
-                             width: "200px",
-                             height: "100px",
-                             marginBottom: "10px",
-                             borderRadius: "unset",
-                         }}
-                         src={showImage || `data:image/jpg;base64,${image}`}
-                         alt=""
-                     /> : null
-                }
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Control
                         type="file"
-                        onChange={(e) => fileUploadHandler(e)}
+                        onChange={(e) => setBannerImage(e.target.files[0])} 
                     />
                 </Form.Group>
 
@@ -149,23 +127,24 @@ function BannerUpdate() {
                     <Form.Label>Title</Form.Label>
                     <Form.Control
                         type="text"
-                        name={title}
-                        placeholder={title}
+                        name={Title}
+                        placeholder={Title}
                         onFocus={(e) => e.target.placeholder = ''}
-                        onBlur={(e) => e.target.placeholder = title}
+                        onBlur={(e) => e.target.placeholder = Title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </Form.Group>
 
+     
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Description</Form.Label>
+                    <Form.Label>Price</Form.Label>
                     <Form.Control
                         type="text"
-                        name={description}
-                        placeholder={description}
+                        name={Price}
+                        placeholder={Price}
                         onFocus={(e) => e.target.placeholder = ''}
-                        onBlur={(e) => e.target.placeholder = description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        onBlur={(e) => e.target.placeholder = Price}
+                        onChange={(e) => setPrice(e.target.value)}
                     />
                 </Form.Group>
 
