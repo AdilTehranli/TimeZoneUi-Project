@@ -54,19 +54,19 @@ function App() {
 
   return (
 
-  
+
     <Router>
-      
+
       <Navbar />
       <div className='app'>
-       
+
 
         <Routes>
 
-        
+
           <Route path="/" element={<Login/>} />
-          
-           {/* <Route element={<Protection />}>  */}
+
+           {/* <Route element={<Protection />}> */}
           <Route path="/dashborad" element={<Home />} />
           <Route path="*" element={<NotFound404 />} />
           <Route path="/404" element={<NotFound404 />} />
@@ -85,7 +85,7 @@ function App() {
           <Route path="/brand/detail/:id" element={<BrandDetail/>} />
           <Route path="/brandCreate" element={<BrandCreate />} />
           <Route path="/brandUpdate/:id" element={<BrandUpdate />} />
-          
+
 
           <Route path="/slider" element={<SliderTable />} />
           <Route path="/slider/detail/:id" element={<SliderDetail/>} />
@@ -113,7 +113,7 @@ function App() {
           <Route path="/contactTable" element={<ContactTable/>} />
           <Route path="/contact/detail/:id" element={<ContactDetail/>} />
 
-        
+
           <Route path="/contact" element={<Contact/>} />
           <Route path="/about" element={<About/>} />
           <Route path="/employee" element={<Employees/>} />

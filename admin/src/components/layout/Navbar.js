@@ -86,7 +86,7 @@ function Navbar() {
         <>
             <header>
 
-                <section id="header" style={{ position: "fixed", top: "0", left: "0", right: "0", backgroundColor: "#01574A", boxShadow: "0 5px 15px rgba(0, 0, 0, 0.06)", zIndex: "999", transition: "top 0.3s ease-in-out" }}>
+                <section id="header" style={{ position: "fixed", top: "0", left: "0", right: "0", backgroundColor: "red", boxShadow: "0 5px 15px rgba(0, 0, 0, 0.06)", zIndex: "999", transition: "top 0.3s ease-in-out" }}>
             
             
                     <div className='col-2 d-lg-none hamburger-menu'>
@@ -132,20 +132,7 @@ function Navbar() {
 
                                 </div>
                             </div>
-                            {/* <div className="basket">
-                                <Link to={"/basket"}>
-                                    <Icon path={mdiBasketOutline} size={1} className='icon icon2' color="white" />
-                                    <sup>{props.basketcount}</sup>
-
-                                </Link>
-                            </div>
-                            <div className="heart">
-                                <a href="heart.html">
-                                    <Icon path={mdiHeartOutline} size={1} className='icon icon2' color="white" />
-                                    <sup>0</sup>
-
-                                </a>
-                            </div> */}
+                 
                         </ul>
 
 

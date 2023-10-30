@@ -15,17 +15,15 @@ function ProductUpdate() {
 
     const url = 'https://localhost:7027';
 
-    const [product, setProduct] = useState([]);
-    const [productimage, setProductImage] = useState();
-    const [categories, setCategories] = useState([]);
-    const [brand, setBrand] = useState([]);
+    const [Product, setProduct] = useState([]);
+    const [ProductImage, setProductImage] = useState();
+    const [Category, setCategory] = useState([]);
+    const [Brand, setBrand] = useState([]);
     const [categoryInput, setCategoryInput] = useState();
     const [brandInput, setBrandInput] = useState(); 
-    const [description, setDescription] = useState();
-    const [title, setTitle] = useState();
-    const [price, setPrice] = useState();
-
-    const [brands, setBrands] = useState([]);
+    const [Description, setDescription] = useState();
+    const [Title, setTitle] = useState();
+    const [Price, setPrice] = useState();
 
 
     let token = JSON.parse(localStorage.getItem("token"));
@@ -69,7 +67,7 @@ function ProductUpdate() {
     const getAllCategory = async () => {
         try {
             const response = await axios.get(`${url}/api/Categories/GetCategory`);
-            setCategories(response.data);
+            setCategory(response.data);
         } catch (error) {
             console.error(error);
         }
@@ -90,12 +88,12 @@ function ProductUpdate() {
 
 
     const newProduct = {
-        productimage: productimage,
-        description: description,
+        ProductImage: ProductImage,
+        Description: Description,
         categoryId: categoryInput,
         brandId: brandInput,
-        price: price,
-        title: title,
+        Price: Price,
+        Title: Title,
     };
 
 
@@ -168,10 +166,10 @@ function ProductUpdate() {
                                 <Form.Label>Title</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name={title}
-                                    placeholder={title}
+                                    name={Title}
+                                    placeholder={Title}
                                     onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = title}
+                                    onBlur={(e) => e.target.placeholder = Title}
                                     onChange={(e) => setTitle(e.target.value)}
                                 />
                             </Form.Group>
@@ -180,10 +178,10 @@ function ProductUpdate() {
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name={description}
-                                    placeholder={description}
+                                    name={Description}
+                                    placeholder={Description}
                                     onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = description}
+                                    onBlur={(e) => e.target.placeholder = Description}
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
                             </Form.Group>
@@ -192,10 +190,10 @@ function ProductUpdate() {
                                 <Form.Label>Price</Form.Label>
                                 <Form.Control
                                     type="number"
-                                    name={price}
-                                    placeholder={price}
+                                    name={Price}
+                                    placeholder={Price}
                                     onFocus={(e) => e.target.placeholder = ''}
-                                    onBlur={(e) => e.target.placeholder = price}
+                                    onBlur={(e) => e.target.placeholder = Price}
                                     onChange={(e) => setPrice(e.target.value)}
                                 />
                             </Form.Group>
@@ -205,10 +203,10 @@ function ProductUpdate() {
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Select
                                     aria-label="Product Category"
-                                    value={categoryInput} // Set the selected category ID as the value
+                                    value={categoryInput} 
                                     onChange={(e) => setCategoryInput(e.target.value)}
                                 >
-                                    {categories.map((category) => (
+                                    {Category.map((category) => (
                                         <option key={category.id} value={category.id}>
                                             {category.name}
                                         </option>
@@ -221,7 +219,7 @@ function ProductUpdate() {
                                     value={brandInput} 
                                     onChange={(e) => setBrandInput(e.target.value)}
                                 >
-                                    {brand.map((brand) => (
+                                    {Brand.map((brand) => (
                                         <option key={brand.id} value={brand.id}>
                                             {brand.name}
                                         </option>

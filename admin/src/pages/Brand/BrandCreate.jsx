@@ -129,7 +129,7 @@ function BrandCreate() {
                             <Button variant="outline-primary" type="submit">
                                 Create
                             </Button>
-                            <Link to="/Brand">
+                            <Link to="/brandTable">
                                 <Button variant="outline-dark" type="submit" className='mx-2'>
                                     Cancel
                                 </Button>

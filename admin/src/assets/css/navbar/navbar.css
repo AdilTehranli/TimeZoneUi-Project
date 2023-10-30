@@ -499,20 +499,18 @@
 .dropdown .dropdown-content a {
     padding-top: 5px;
     height: 36px;
-    /* width: 20px; */
     text-align: center;
     display: flex;
     justify-content: center;
-    color: #505668;
-    /* padding: 10px 38px; */
+    color: red;
     border-radius: 5px;
     text-decoration: none;
     display: block;
     transition: 0.3s;
 }
 .dropdown .dropdown-content a:hover {
-    background-color: #1b6b44;
-    color: wheat;
+    background-color: white;
+    color: red;
     font-size: 17px;
 }
 

@@ -27,7 +27,7 @@
   padding: 50px 40px;
   display: flex;
   flex-direction: column;
-  background: #f2efe0;
+  background: white;
 }
 #login-area .main .box .form h2 {
   color: #3b4152;
@@ -77,7 +77,7 @@
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: #01574A;
+  background: red;
   border-radius: 4px;
   transition: 0.5s;
   pointer-events: none;
@@ -104,7 +104,7 @@
 #login-area .main .box .form input[type=submit] {
   border: none;
   outline: none;
-  background: #01574A;
+  background: red;
   color: #ffffff;
   padding: 11px 25px;
   width: 100px;
