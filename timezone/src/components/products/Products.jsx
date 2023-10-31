@@ -90,7 +90,6 @@ const Products = ({ items }) => {
                     to={`/productdetail/${product.id}`}
                   >
                     <h3>{product.title}</h3>
-                    <p>{product.description}</p>
                   </Link>
                   <p className="category">{product.category}</p>
                   <p>{product.brand}</p>

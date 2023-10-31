@@ -90,7 +90,7 @@ const CartList = () => {
                   <h3>{product.title}</h3>
                   <p className='category'>{product.category}</p>
                   <p className='brand'>{product.brand}</p>
-                  <p >${product.price}</p>
+                  <b>${product.price}</b>
                 </div>
               </div>
               <div className="quantity">

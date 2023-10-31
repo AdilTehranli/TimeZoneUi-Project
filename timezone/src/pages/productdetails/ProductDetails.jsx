@@ -27,6 +27,8 @@ const ProductDetails = () => {
         setCartProducts(updatedCart);
       } else {
         dispatch(addToCart({ ...product, quantity: 1 }));
+    toast.success('Added to the card');
+
       }
     } else {
       toast.error("Please log in to add to cart");

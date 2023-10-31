@@ -10,6 +10,7 @@ import video from "../../assets/videos/Rolex Glidelock – Take it up a notch.mp
 import Wrapper from "../../components/wrapper/Wrapper";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
 AOS.init();
 const contentStyle = {};
 const Home = () => {

@@ -218,12 +218,21 @@
   }
   .gallery{
     align-items: center;
-    flex-direction: column;
     .gallery__image__left{
      .left{
-      width: 399px;
+      width: 445px;
      }
      
+    }
+    .gallery__image__right{
+      .gallery__image__right__middle{
+        width: 212px;
+        height: 247px;
+      }
+      .gallery__image__right__end{
+        width: 245px;
+      
+      }
     }
   }
   .choise{
@@ -264,7 +273,9 @@
      .arrivals__products{
       flex-wrap: wrap;
       .arrivals__product{
+        width: 330px;
         img{
+          width: 300px;
         }
       }
       }
@@ -276,6 +287,16 @@
        .left{
         width: 399px;
        }
+      }
+      .gallery__image__right{
+        .gallery__image__right__middle{
+          width: 212px;
+          height: 247px;
+        }
+        .gallery__image__right__end{
+          width: 245px;
+        
+        }
       }
     }
     .choise{
