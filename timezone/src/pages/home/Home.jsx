@@ -90,7 +90,7 @@ const Home = () => {
         <div className="row">
           <div className="arrivals">
             <div className="arrivals__title">
-              <h2>New Arrivals</h2>
+  
             </div>
             <div className="arrivals__products d-flex ">
               {banner.map((item, index) => (
