@@ -95,15 +95,17 @@
   @media screen and (max-width: 768px) {
     .products{
        .products__item{
-         gap: 20px;
          .products__item__container{
-          flex-direction: column;
-          .products__item__image{
+           .products__item__image{
+             
             height: 283px;
             width: 266px;
             img{
               width: 266px;
             }
+          }
+          .products__item__title{
+            width: 90%;
           }
         }
        }

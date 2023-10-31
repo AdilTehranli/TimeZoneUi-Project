@@ -60,7 +60,7 @@ const Products = ({ items }) => {
       <div className="container">
         <div className="row">
           {item.map((product, index) => (
-            <div key={index} className="products__item col-4 ">
+            <div key={index} className="products__item col-xl-4 col-lg-4 col-md-6 col-sm-6 ">
               <div className="products__item__container">
                 <div className="products__item__image">
                   <img
@@ -98,7 +98,7 @@ const Products = ({ items }) => {
               </div>
             </div>
           ))}
-        </div>
+          </div>
       </div>
       <ToastContainer
         position="top-right"

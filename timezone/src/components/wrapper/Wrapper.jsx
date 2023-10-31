@@ -21,7 +21,7 @@ const Wrapper = () => {
           <div className="row">
             {
               wrapper.map((item, index) => (
-                <div key={index} className="wrapper__texts col-4">
+                <div key={index} className="wrapper__texts col-xl-4 col-lg-4 col-md-6">
                  <i class={item.icon}></i>
                  <h4>{item.title}</h4>
                  <p>{item.description}</p>

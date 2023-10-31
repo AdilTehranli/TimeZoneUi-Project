@@ -283,27 +283,30 @@
     .gallery{
       flex-wrap: wrap;
       .gallery__image__left{
-       align-items: center;
        .left{
-        width: 399px;
+        width: 371px;
        }
       }
       .gallery__image__right{
         .gallery__image__right__middle{
-          width: 212px;
-          height: 247px;
+          width: 159px;
+          height: 206px;
         }
         .gallery__image__right__end{
-          width: 245px;
-        
+          width: 198px;
         }
       }
     }
     .choise{
       choise__right{
         h2{
-          color: red;
+          font-size: 10px;
         }
+      }
+      .choise__left{
+img{
+  width: 353px;
+}
       }
     }
   }

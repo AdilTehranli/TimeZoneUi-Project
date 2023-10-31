@@ -111,6 +111,7 @@ const Home = () => {
         </div>
       </div>
       <div className="gallery d-flex">
+    
         <div className="gallery__image__left col-6">
           <img
             className="left"

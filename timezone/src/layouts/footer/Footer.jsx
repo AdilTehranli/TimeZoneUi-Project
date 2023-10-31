@@ -6,7 +6,7 @@ const Footer = () => {
     <footer>
       <div className="container">
         <div className="row">
-          <div className="footer__logo col-3">
+          <div className="footer__logo col-xl-3 col-lg-3 col-md-5 col-sm-6">
             <img
               src="	https://themewagon.github.io/timezone/assets/img/logo/logo2_footer.png"
               alt=""
@@ -16,7 +16,7 @@ const Footer = () => {
               sed do eiusmod tem.
             </p>
           </div>
-          <div className="footer__orderlists col-3">
+          <div className="footer__orderlists col-xl-2 col-lg-3 col-md-3 col-sm-5">
           <ul className="footer__orderlists__ul">
               Quick Links
               <li>About</li>
@@ -25,7 +25,7 @@ const Footer = () => {
               <li>Contact Us</li>
             </ul>
           </div>
-          <div className="footer__orderlists col-3">
+          <div className="footer__orderlists col-xl-2 col-lg-3 col-md-3 col-sm-5">
             <ul className="footer__orderlists__ul"> 
           
 
@@ -37,7 +37,7 @@ const Footer = () => {
               <li>Rubber made Toys</li>
             </ul>
           </div>
-          <div className="footer__orderlists col-3">
+          <div className="footer__orderlists col-xl-2 col-lg-3 col-md-3 col-sm-5">
           <ul className="footer__orderlists__ul">
             Support
               <li>Frequently Asked Questions</li>
@@ -49,7 +49,7 @@ const Footer = () => {
 
         </div>
 
-        <div className="footer__title d-flex">
+        <div className="footer__title d-flex ">
             <p>Copyright ©2023 All rights reserved | This template is made with  by Tehranli</p>
         <div className="footer__icons d-flex">
         <i class="fa-brands fa-twitter"></i>
