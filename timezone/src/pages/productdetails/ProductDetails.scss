@@ -50,3 +50,21 @@
 }
 }
 }
+@media screen and (max-width: 576px) {
+.productsdetail{
+    text-align: center;
+    .productdetails__all{
+        flex-wrap: wrap;
+        .image_prod{
+width: 200px;
+        }
+        .product_info{
+            width: 100%;
+            text-align: -webkit-match-parent;
+            h2{
+font-size: 10px;
+            }
+        }
+    }
+}
+}

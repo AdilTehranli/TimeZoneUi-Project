@@ -90,7 +90,7 @@ const Home = () => {
         <div className="row">
           <div className="arrivals">
             <div className="arrivals__title">
-  
+              <h2>New Arrivals</h2>
             </div>
             <div className="arrivals__products d-flex ">
               {banner.map((item, index) => (
@@ -109,10 +109,10 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div>  
       <div className="gallery d-flex">
     
-        <div className="gallery__image__left col-6">
+        <div className="gallery__image__left col-xl-6 col-lg-4 col-md-6 col-sm-6">
           <img
             className="left"
             src="https://qph.cf2.quoracdn.net/main-qimg-cbb5dff8c6b239a3caf0c2db6f23e326-lq"
@@ -163,7 +163,7 @@ const Home = () => {
       <div className="choise">
         <div className="container">
           <div className="row">
-            <div className="choise__right col-6">
+            <div className="choise__right col-lg-5 col-md-6">
               <h2>Watch of Choice</h2>
               <p>
                 Enim ad minim veniam, quis nostrud exercitation ullamco <br />{" "}
@@ -174,20 +174,20 @@ const Home = () => {
                 <button>SHOW WATCHES</button>
               </Link>
             </div>
-            <div className="choise__left col-6 col-md-2">
+            <div className="choise__left col-lg-6 col-md-6 col-sm-10">
               <img
                 src="	https://themewagon.github.io/timezone/assets/img/gallery/choce_watch1.png"
                 alt=""
               />
             </div>
 
-            <div className="choise__left col-6">
+            <div className="choise__left col-lg-6 col-md-6 col-sm-10">
               <img
                 src="		https://themewagon.github.io/timezone/assets/img/gallery/choce_watch2.png"
                 alt=""
               />
             </div>
-            <div className="choise__right col-6">
+            <div className="choise__right col-lg-5 col-md-6">
               <h2>Watch of Choice</h2>
               <p>
                 Enim ad minim veniam, quis nostrud exercitation ullamco <br />{" "}

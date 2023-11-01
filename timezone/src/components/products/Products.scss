@@ -2,6 +2,10 @@
     width: 100%;
   
     .products__item {
+      .products__item__container{
+        text-align: -webkit-center;  
+
+      }
       margin-top: 35px;
       .products__item__image {
         position: relative;
@@ -52,6 +56,7 @@
       }
   
       .products__item__title {
+
         text-align: center;
   .title__link {
     color: #444444;
@@ -96,18 +101,34 @@
     .products{
        .products__item{
          .products__item__container{
+          text-align: -webkit-center;  
            .products__item__image{
-             
-            height: 283px;
-            width: 266px;
             img{
-              width: 266px;
+          
             }
           }
           .products__item__title{
-            width: 90%;
+          text-align: center;
           }
         }
        }
     }
   }
+  @media screen and (max-width: 576px) {
+    .products{
+      .products__item{
+        gap: 20px;
+        width: 100%;
+       .products__item__container{
+         .products__item__image{
+           height: 283px;
+           width: 266px;
+           img{
+             width: 266px;
+           }
+         }
+       }
+      }
+   }
+ }
+  

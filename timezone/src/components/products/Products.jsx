@@ -58,10 +58,10 @@ const Products = ({ items }) => {
   return (
     <div className="products">
       <div className="container">
-        <div className="row">
+        <div className="row  ">
           {item.map((product, index) => (
             <div key={index} className="products__item col-xl-4 col-lg-4 col-md-6 col-sm-6 ">
-              <div className="products__item__container">
+              <div className="products__item__container  ">
                 <div className="products__item__image">
                   <img
                     src={`https://localhost:7027//${product.productImage}`}
@@ -84,7 +84,7 @@ const Products = ({ items }) => {
                     </p>
                   </div>
                 </div>
-                <div className="products__item__title">
+                <div className="products__item__title  ">
                   <Link
                     className="title__link"
                     to={`/productdetail/${product.id}`}
