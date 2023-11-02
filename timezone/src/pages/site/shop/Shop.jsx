@@ -77,10 +77,10 @@ useEffect(() => {
           </div>
         </div>
         <div className="row">
-          <div className="col-2">
+          <div className="col-xl-2 col-lg-3 col-md-3 col-sm-6">
             <PriceRange onPriceChange={handlePriceChange} />
           </div>
-          <div className="col-10">
+          <div className="col-xl-10 col-lg-12 col-md-12 col-sm-6 text-center ">
           {filteredProducts.length === 0 ? (
   <p>No products in the selected category.</p>
 ) : (
