@@ -9,7 +9,6 @@
             position: relative;
             img{
                 margin-top: 40px;
-                width: 829px;
             }
         }
         .blog__main__position{
@@ -83,6 +82,42 @@
             border: none;
             margin: 12px 3px;
 
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .blog{
+        .blog__main {
+            .blog__main__item{
+            width: 100%;
+                .blog__main__image{
+                    img{
+                        width: 536px;
+
+                    }
+                }
+                .blog__main__texts{
+                    h4{
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 576px) {
+    .blog{
+        .blog__main {
+            .blog__main__item{
+                .blog__main__image{
+                    img{
+                        width: 350px;
+                    }
+                }
+                .blog__main__texts{
+                    h4{
+                    }
+                }
+            }
         }
     }
 }
