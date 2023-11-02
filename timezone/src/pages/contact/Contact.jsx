@@ -151,7 +151,7 @@ const Contact = () => {
               <button type="submit">SEND</button>
             </form>
           </div>
-          <div className="contact__left col-4">
+          <div className="contact__left col-lg-3 offset-lg-1">
             <div className="contact__info d-flex">
               <FiHome className="contact__icon" />
               <div className="contact__info__text">
