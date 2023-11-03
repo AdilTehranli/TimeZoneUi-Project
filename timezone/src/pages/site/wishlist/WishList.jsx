@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './WishList.scss';
 import Slider from '../../../components/slider/Slider';
 import { addToCart } from '../../../redux/slice/CartSlice';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import { BsTrash } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import { removeLike } from '../../../redux/slice/LikeSlice';
@@ -25,6 +25,7 @@ const navigate=useNavigate()
         setCartProducts(updatedCart);
       } else {
         dispatch(addToCart({ ...product, quantity: 1 }));
+
       }
     } else {
       toast.error("Please log in to add to cart");
@@ -55,14 +56,29 @@ const navigate=useNavigate()
                 </td>
                 <td>${product.price.toFixed(2)}</td>
                 <td>
-                  <button className="wishlist-add-to-cart-button" onClick={()=>handleAddToCart(product)}>Add to Cart</button>
-                  <BsTrash className="trash" onClick={() => dispatch(removeLike(product.id))} style={{cursor:'pointer'}} />
+                  <button className="wishlist-add-to-cart-button"  onClick={() => {
+                        handleAddToCart(product);
+                        toast.success("Added to the card");
+                      }}>Add to Cart</button>
+                  <BsTrash className="trash" onClick={() => {dispatch(removeLike(product.id));toast.success("Product deleted")}} style={{cursor:'pointer'}} />
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }

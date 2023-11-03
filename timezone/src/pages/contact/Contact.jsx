@@ -103,7 +103,7 @@ const Contact = () => {
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
         <div className="row">
-          <div className="contact__right col-8">
+          <div className="contact__right col-8 "> 
             <h3>Get in Touch</h3>
             <form onSubmit={(e) => CreateContact(e)}>
               <textarea
