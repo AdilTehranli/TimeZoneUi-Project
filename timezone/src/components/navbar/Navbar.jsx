@@ -1,21 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../navbar/Navbar.scss";
 import "bootstrap/dist/css/bootstrap.css";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
-import { RxHamburgerMenu } from "react-icons/rx";
 import { SlBasket } from "react-icons/sl";
 import { useSelector } from "react-redux";
-
-import { useState } from "react";
 import Swal from "sweetalert2";
-
+import { CSSTransition } from "react-transition-group";
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
   const totalItems = useSelector((state) => state.cart.totalItems);
   const [username, setUsername] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -50,7 +48,6 @@ const Navbar = () => {
       : null;
   }
 
-
   function handleLogout() {
     localStorage.removeItem("token");
     sessionStorage.setItem("sweetAlertMessage", "You signed out");
@@ -76,15 +73,14 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => { 
+    return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    
     <div>
-  <nav className={`navbar ${isSticky ? "sticky" : ""}`}>
+      <nav className={`navbar ${isSticky ? "sticky" : ""}`}>
         <div className="container">
           <div className="navbar__all">
             <div className="navbar__logo">
@@ -152,7 +148,9 @@ const Navbar = () => {
                     ) : (
                       <ul>
                         <li>
-                          <Link className="hover__link" to="/register">Register</Link>
+                          <Link className="hover__link" to="/register">
+                            Register
+                          </Link>
                         </li>
                       </ul>
                     )}
@@ -168,9 +166,49 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <div className="bar">
-            <RxHamburgerMenu className="bar_icon"/>
+            <div className="bar" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <div className="bar_icon">&#9776;</div>
             </div>
+            <CSSTransition
+              in={isMenuOpen}
+              timeout={300}
+              classNames="menu"
+              unmountOnExit
+            >
+              <div
+                className={`bar_dropdown col-md-11 col-sm-11 ${
+                  isMenuOpen ? "show-menu" : ""
+                }`}
+              >
+                <ul>
+                  <li>
+                    <Link className="change__link" to="/">
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="change__link" to="/shop">
+                      Shop
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="change__link" to="/about">
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="change__link" to="/blog">
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="change__link" to="/contact">
+                      Contact
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </CSSTransition>
           </div>
         </div>
       </nav>
