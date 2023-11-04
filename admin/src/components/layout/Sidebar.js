@@ -16,7 +16,7 @@ function Sidebar() {
           <li className="menu-item ">
             <i className="fa fa-home"></i>
 
-            <Link to="/dashborad"> Dashborad</Link>
+            <Link to="/dashboard"> Dashboard</Link>
 
           </li>
           <li className="menu-item">

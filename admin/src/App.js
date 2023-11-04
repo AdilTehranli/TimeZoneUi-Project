@@ -67,7 +67,7 @@ function App() {
           <Route path="/" element={<Login/>} />
 
            {/* <Route element={<Protection />}> */}
-          <Route path="/dashborad" element={<Home />} />
+          <Route path="/dashboard" element={<Home />} />
           <Route path="*" element={<NotFound404 />} />
           <Route path="/404" element={<NotFound404 />} />
           <Route path="/400" element={<BadRequset400 />} />

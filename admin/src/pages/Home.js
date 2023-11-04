@@ -15,7 +15,7 @@ function Home() {
 
         <div className='col-10 mt-3'>
 
-          <h1 className='text-center mt-5'> Dashborad</h1>
+          <h1 className='text-center mt-5'> Dashboard</h1>
         </div>
 
       </div>

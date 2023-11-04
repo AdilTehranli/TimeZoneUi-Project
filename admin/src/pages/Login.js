@@ -65,13 +65,11 @@
               parseJwt(currentToken)[
                 "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
               ];
-              console.log("User Role: ", userRole);
-              console.log("Current Token:", currentToken);
 
     
               if (userRole.includes("Admin") || userRole.includes("SuperAdmin")) {
                 currentUser = currentToken;
-                navigate("/dashborad");
+                navigate("/dashboard");
               } else {
                 Swal.fire({
                   position: "top-end",
