@@ -11,6 +11,7 @@ const Shop = () => {
  const [items, setItems] = useState([]);
  const [filteredProducts, setFilteredProducts] = useState([]);
  const [selectedCategory, setSelectedCategory] = useState('All'); 
+ const [maxPrice, setMaxPrice] = useState(100000); 
 
  const handlePriceChange = (range) => {
     setPriceRange(range);
@@ -19,13 +20,15 @@ const Shop = () => {
   console.log('Selected Category:', category);
   setSelectedCategory(category);
 };
-
- useEffect(() => {
+useEffect(() => {
   axios
     .get('https://localhost:7027/api/Products/GetProduct')
     .then((res) => {
       console.log('Data received from API:', res.data);
       setItems(res.data);
+
+      const maxPriceFromAPI = Math.max(...res.data.map(item => item.price));
+      setMaxPrice(maxPriceFromAPI);
     })
     .catch((error) => {
       console.error(error);
@@ -78,7 +81,7 @@ useEffect(() => {
         </div>
         <div className="row">
           <div className="col-xl-2 col-lg-3 col-md-3 col-sm-6">
-            <PriceRange onPriceChange={handlePriceChange} />
+          <PriceRange onPriceChange={handlePriceChange} maxPrice={maxPrice} />
           </div>
           <div className="col-xl-10 col-lg-12 col-md-12 col-sm-6 text-center ">
           {filteredProducts.length === 0 ? (
