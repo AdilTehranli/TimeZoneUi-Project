@@ -144,7 +144,7 @@ const Home = () => {
             </p>
           </div>
           <div>
-            {loading ? <div>Loading...</div> : <Products items={products} />}
+            {loading ? <div>Loading...</div> : <Products items={products.slice(0,6)} />}
           </div>
 
           <div className="items__btn">
