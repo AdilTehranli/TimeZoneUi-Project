@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Slider from '../../components/slider/Slider';
 import '../login/Login.scss';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import Navbar from '../../components/navbar/Navbar';
 
@@ -43,7 +43,7 @@ localStorage.setItem("token", JSON.stringify(token));
       }, 2000);
     } catch (error) {
       console.error(error);
-        toast.error("Login failed. Please try again.");
+        toast.error("User name or password is wrong");
     }
   };
   return (
@@ -66,8 +66,20 @@ localStorage.setItem("token", JSON.stringify(token));
       </form>
     </div>
   </div>
-</div>
 
+</div>
+       <ToastContainer
+              position="top-right"
+              autoClose={1500}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
     </div>
   )
 }
