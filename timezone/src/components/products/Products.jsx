@@ -63,10 +63,12 @@ const Products = ({ items }) => {
             <div key={index} className="products__item col-xl-4 col-lg-4 col-md-6 col-sm-6 ">
               <div className="products__item__container  ">
                 <div className="products__item__image">
+                 <Link   to={`/productdetail/${product.id}`}>
                   <img
                     src={`https://localhost:7027//${product.productImage}`}
                     alt=""
-                  />
+                    />
+                    </Link>
                   <div className="products__item__image__icon">
                     <i
                       className="fa-regular fa-heart"

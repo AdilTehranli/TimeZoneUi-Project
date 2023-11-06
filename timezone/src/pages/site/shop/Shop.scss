@@ -7,6 +7,7 @@
             li{
                 list-style: none;
                 cursor: pointer;
+                user-select: none;
                 &:hover{
                     color: red;
                 }
@@ -14,4 +15,36 @@
            }
         }
     }
+    /* Stil pagination bileşeni için */
+    
+    .pagination {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+      
+        li {
+          margin: 0 5px;
+          display: inline-block;
+          cursor: pointer;
+          user-select: none;
+          padding: 5px 10px;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+          background-color: #fff;
+      
+          &.active {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #007bff;
+          }
+      
+          &:hover {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #007bff;
+          }
+        }
+      }
 }

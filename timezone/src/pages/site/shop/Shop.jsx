@@ -5,55 +5,71 @@ import Products from '../../../components/products/Products';
 import Wrapper from '../../../components/wrapper/Wrapper';
 import PriceRange from '../../../components/pricerange/PriceRange';
 import axios from 'axios';
+import ReactPaginate from 'react-paginate';
 
 const Shop = () => {
- const [priceRange, setPriceRange] = useState([1, 1000]);
- const [items, setItems] = useState([]);
- const [filteredProducts, setFilteredProducts] = useState([]);
- const [selectedCategory, setSelectedCategory] = useState('All'); 
- const [maxPrice, setMaxPrice] = useState(100000); 
-
- const handlePriceChange = (range) => {
+  const itemsPerPage = 6; 
+  const [priceRange, setPriceRange] = useState([1, 1000]);
+  const [items, setItems] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [maxPrice, setMaxPrice] = useState(100000);
+  const [pageNumber, setPageNumber] = useState(1);   
+  const [pageSize, setPageSize] = useState(4); 
+  const [totalPages, setTotalPages] = useState(0); 
+  const handlePriceChange = (range) => {
     setPriceRange(range);
- };
- const handleCategoryChange = (category) => {
-  console.log('Selected Category:', category);
-  setSelectedCategory(category);
-};
-useEffect(() => {
-  axios
-    .get('https://localhost:7027/api/Products/GetProduct')
-    .then((res) => {
-      console.log('Data received from API:', res.data);
-      setItems(res.data);
+  };
+  const handlePageClick = (selectedPage) => {
+    const newPageNumber = selectedPage.selected + 1;
+    setPageNumber(newPageNumber);
+  };
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
 
-      const maxPriceFromAPI = Math.max(...res.data.map(item => item.price));
-      setMaxPrice(maxPriceFromAPI);
-    })
-    .catch((error) => {
-      console.error(error);
-      setItems([]);
-    });
-}, []);
-useEffect(() => {
-  console.log('Price Range:', priceRange);
-  console.log('Selected Category:', selectedCategory);
+  const handlePageChange = (newPageNumber) => {
+    setPageNumber(newPageNumber);
+  };
 
-  let filteredItems = items.filter(
-    (item) => item.price >= priceRange[0] && item.price <= priceRange[1]
-  );
+  const handlePageSizeChange = (newPageSize) => {
+    setPageSize(newPageSize);
+  };
 
-  if (selectedCategory !== 'All') {
-    filteredItems = filteredItems.filter((item) => item.category === selectedCategory);
-  }
+  useEffect(() => {
+    axios
+      .get(`https://localhost:7027/api/Products/GetProduct?PageNumber=${pageNumber}&PageSize=${pageSize}`)
+      .then((res) => {
+        if (res.data && res.data.data && Array.isArray(res.data.data)) {
+          setItems(res.data.data);
+          setTotalPages(res.data.totalPages); 
+          const maxPriceFromAPI = Math.max(...res.data.data.map(item => item.price));
+          setMaxPrice(maxPriceFromAPI);
+        } else {
+          console.error('API response is not as expected:', res.data);
+          setItems([]);
+          setTotalPages(0); 
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setItems([]);
+        setTotalPages(0); 
+      });
+  }, [pageNumber, pageSize]);
+  
+  
+  useEffect(() => {
+    let filteredItems = items.filter(
+      (item) => item.price >= priceRange[0] && item.price <= priceRange[1]
+    );
 
-  if (selectedCategory === 'All' && priceRange[0] === 1 && priceRange[1] === 1000) {
-    setFilteredProducts(items);
-  } else {
+    if (selectedCategory !== 'All') {
+      filteredItems = filteredItems.filter((item) => item.category === selectedCategory);
+    }
+
     setFilteredProducts(filteredItems);
-  }
-}, [priceRange, items, selectedCategory]);
-
+  }, [priceRange, items, selectedCategory]);
 
   return (
     <div>
@@ -70,25 +86,35 @@ useEffect(() => {
               </ul>
             </div>
             <div className="sort__select col-2">
-              <select className="form-select" aria-label="Default select example">
-                <option selected>40 per page</option>
-                <option value="1">50 per page</option>
-                <option value="2">60 per page</option>
-                <option value="3">70 per page</option>
+              <select className="form-select" aria-label="Default select example" onChange={(e) => handlePageSizeChange(e.target.value)}>
+                <option value="4" selected>40 per page</option>
+                <option value="5">50 per page</option>
+                <option value="6">60 per page</option>
+                <option value="7">70 per page</option>
               </select>
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-xl-2 col-lg-3 col-md-3 col-sm-6">
-          <PriceRange onPriceChange={handlePriceChange} maxPrice={maxPrice} />
+            <PriceRange onPriceChange={handlePriceChange} maxPrice={maxPrice} />
           </div>
-          <div className="col-xl-10 col-lg-12 col-md-12 col-sm-6 text-center ">
-          {filteredProducts.length === 0 ? (
-  <p>No products in the selected category.</p>
-) : (
-  <Products items={filteredProducts} />
-)}
+          <div className="col-xl-10 col-lg-12 col-md-12 col-sm-6 text-center">
+            {filteredProducts.length === 0 ? (
+              <p>No products in the selected category.</p>
+            ) : (
+              <Products items={filteredProducts} />
+              
+            )}
+            <ReactPaginate
+              pageCount={totalPages}
+              pageRangeDisplayed={5}
+              marginPagesDisplayed={1}
+              onPageChange={handlePageClick}
+              containerClassName="pagination"
+              subContainerClassName="pages pagination"
+              activeClassName="active"
+              />
           </div>
         </div>
         <Wrapper />
