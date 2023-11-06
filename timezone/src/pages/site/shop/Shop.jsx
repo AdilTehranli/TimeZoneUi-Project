@@ -38,7 +38,7 @@ const Shop = () => {
 
   useEffect(() => {
     axios
-      .get(`https://localhost:7027/api/Products/GetProduct?PageNumber=${pageNumber}&PageSize=${pageSize}`)
+      .get(`https://localhost:7027/api/Products/GetProductPagination?PageNumber=${pageNumber}&PageSize=${pageSize}`)
       .then((res) => {
         if (res.data && res.data.data && Array.isArray(res.data.data)) {
           setItems(res.data.data);
@@ -99,7 +99,7 @@ const Shop = () => {
           <div className="col-xl-2 col-lg-3 col-md-3 col-sm-6">
             <PriceRange onPriceChange={handlePriceChange} maxPrice={maxPrice} />
           </div>
-          <div className="col-xl-10 col-lg-12 col-md-12 col-sm-6 text-center">
+          <div className="alert col-xl-10 col-lg-12 col-md-12 col-sm-6 text-center">
             {filteredProducts.length === 0 ? (
               <p>No products in the selected category.</p>
             ) : (

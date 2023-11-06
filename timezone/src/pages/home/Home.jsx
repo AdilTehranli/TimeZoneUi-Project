@@ -39,6 +39,7 @@ const Home = () => {
         setLoading(false);
       });
   }, []);
+  
   useEffect(() => {
     axios
       .get("https://localhost:7027/api/Sliders/GetSlider")
@@ -56,9 +57,9 @@ const Home = () => {
         <div className="container">
           <Carousel afterChange={onChange}>
             {items.map((slider, index) => (
-              <div>
+              <div key={index} >
                 <h3 style={contentStyle}>
-                  <div key={index} className="slider__all d-flex">
+                  <div className="slider__all d-flex">
                     <div className="slider__title">
                       <div data-aos="fade-right">
                         <h1>{slider.title}</h1>
@@ -144,7 +145,7 @@ const Home = () => {
             </p>
           </div>
           <div>
-            {loading ? <div>Loading...</div> : <Products items={products} />}
+            {loading ? <div>Loading...</div> : <Products items={products.slice(0,6)} />}
           </div>
 
           <div className="items__btn">

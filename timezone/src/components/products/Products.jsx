@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addlike } from "../../redux/slice/LikeSlice";
 
-const Products = ({ items }) => {
+const Products = ({ items = [] }) => {
   const [likedProducts, setLikedProducts] = useState([]);
   const [item, setItems] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
