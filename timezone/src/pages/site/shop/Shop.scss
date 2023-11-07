@@ -14,15 +14,17 @@
             }
            }
         }
-    }
+    }    
+}
 .alert{
 
-    .pagination {
+    .paginate {
         display: flex;
         justify-content: center;
         list-style: none;
         padding: 0;
         margin: 20px 0;
+        
         
         li {
             margin: 0 5px;
@@ -48,4 +50,3 @@
         }
     }
 }
-}    

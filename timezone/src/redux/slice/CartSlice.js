@@ -5,26 +5,28 @@ const cartSlice = createSlice({
   initialState: {
     list: JSON.parse(localStorage.getItem('cartProducts')) || [],
     total: 0,
-    totalItems: parseInt(localStorage.getItem('totalItems')) || 0, 
+    totalItems: parseInt(localStorage.getItem('totalItems')) || 0,
   },
+  
   reducers: {
     addToCart: (state, action) => {
       const productToAdd = action.payload;
       const existingProductIndex = state.list.findIndex(item => item.id === productToAdd.id);
-
+    
       if (existingProductIndex !== -1) {
         state.list[existingProductIndex].quantity += productToAdd.quantity;
         state.total += productToAdd.quantity;
-        state.totalItems += productToAdd.quantity; 
+        state.totalItems += productToAdd.quantity;
       } else {
         state.list.push(productToAdd);
         state.total += productToAdd.quantity;
-        state.totalItems += productToAdd.quantity; 
+        state.totalItems += productToAdd.quantity;
       }
-
+    
       localStorage.setItem('cartProducts', JSON.stringify(state.list));
       localStorage.setItem('totalItems', state.totalItems);
     },
+    
     removeFromCart: (state, action) => {
       const productIdToRemove = action.payload;
       const productToRemoveIndex = state.list.findIndex(item => item.id === productIdToRemove);

@@ -8,15 +8,16 @@ import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 
 const Shop = () => {
-  const itemsPerPage = 6; 
+  const itemsPerPage = 6;
   const [priceRange, setPriceRange] = useState([1, 1000]);
   const [items, setItems] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [maxPrice, setMaxPrice] = useState(100000);
-  const [pageNumber, setPageNumber] = useState(1);   
-  const [pageSize, setPageSize] = useState(4); 
-  const [totalPages, setTotalPages] = useState(0); 
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageSize, setPageSize] = useState(6);
+  const [totalPages, setTotalPages] = useState(0);
+  
   const handlePriceChange = (range) => {
     setPriceRange(range);
   };
@@ -42,21 +43,22 @@ const Shop = () => {
       .then((res) => {
         if (res.data && res.data.data && Array.isArray(res.data.data)) {
           setItems(res.data.data);
-          setTotalPages(res.data.totalPages); 
-          const maxPriceFromAPI = Math.max(...res.data.data.map(item => item.price));
+          setTotalPages(res.data.totalPages);
+          const maxPriceFromAPI = Math.max(...res.data.data.map((item) => item.price));
           setMaxPrice(maxPriceFromAPI);
         } else {
           console.error('API response is not as expected:', res.data);
           setItems([]);
-          setTotalPages(0); 
+          setTotalPages(0);
         }
       })
       .catch((error) => {
         console.error(error);
         setItems([]);
-        setTotalPages(0); 
+        setTotalPages(0);
       });
   }, [pageNumber, pageSize]);
+  
   
   
   useEffect(() => {
@@ -97,7 +99,7 @@ const Shop = () => {
         </div>
         <div className="row">
           <div className="col-xl-2 col-lg-3 col-md-3 col-sm-6">
-            <PriceRange onPriceChange={handlePriceChange} maxPrice={maxPrice} />
+          <PriceRange onPriceChange={handlePriceChange} maxPrice={maxPrice} />
           </div>
           <div className="alert col-xl-10 col-lg-12 col-md-12 col-sm-6 text-center">
             {filteredProducts.length === 0 ? (
@@ -106,15 +108,16 @@ const Shop = () => {
               <Products items={filteredProducts} />
               
             )}
-            <ReactPaginate
-              pageCount={totalPages}
-              pageRangeDisplayed={5}
-              marginPagesDisplayed={1}
-              onPageChange={handlePageClick}
-              containerClassName="pagination"
-              subContainerClassName="pages pagination"
-              activeClassName="active"
-              />
+              <ReactPaginate className='paginate'
+        pageCount={totalPages}
+        pageRangeDisplayed={5}
+        marginPagesDisplayed={1}
+        onPageChange={({ selected }) => handlePageChange(selected + 1)}
+        containerClassName="pagination"
+        subContainerClassName="pages pagination"
+        activeClassName="active" 
+        
+      />
           </div>
         </div>
         <Wrapper />

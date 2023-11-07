@@ -12,9 +12,10 @@ const CartList = () => {
 
   const cart = useSelector(state => state.cart.list);
   const [cartProducts, setCartProducts] = useState(cart);
-  const dispatch = useDispatch();
   const item = useSelector(state => state.items);
+  const dispatch = useDispatch();
 
+  const totalItems = useSelector(state => state.cart.totalItems);
   const handleQuantityChange = (productId, newQuantity) => {
     if (newQuantity < 1) {
       newQuantity = 1; 
@@ -50,8 +51,7 @@ const CartList = () => {
   
     dispatch(removeFromCart(productId));
   };
-  
-  
+
   
   const calculateTotal = () => {
     let total = 0;
@@ -63,6 +63,7 @@ const CartList = () => {
     return total.toFixed(2);
   };
 
+  
   useEffect(() => {
     setCartProducts(cart || []);
   }, [cart]);
