@@ -35,17 +35,24 @@
             border: 1px solid #ccc;
             border-radius: 3px;
             background-color: #fff;
-            
+            a{
+                text-decoration: none;
+                &:hover{
+                    color: white;
+                }
+                
+            }
             &.active {
                 background-color: #007bff;
                 color: #fff;
                 border: 1px solid #007bff;
+                text-decoration: none;
             }
             
             &:hover {
-                background-color: #007bff;
+                background-color: red;
                 color: #fff;
-                border: 1px solid #007bff;
+                border: 1px solid red;
             }
         }
     }

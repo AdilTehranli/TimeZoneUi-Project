@@ -5,7 +5,7 @@ import Slider from '../../components/slider/Slider';
 import { useSelector, useDispatch } from 'react-redux';
 import { BsTrash } from 'react-icons/bs';
 import { ToastContainer, toast } from 'react-toastify';
-import { removeFromCart } from '../../redux/slice/CartSlice';
+import { addToCart, removeFromCart } from '../../redux/slice/CartSlice';
 
 const CartList = () => {
   const [items, setItems] = useState([]);  
@@ -31,9 +31,15 @@ const CartList = () => {
       updatedCart.push({ ...productToAdd, quantity: 1 });
     }
   
+    dispatch(removeFromCart(productId)); 
+    dispatch(addToCart(existingProduct));
+  
     calculateTotal();
     setCartProducts(updatedCart);
   };
+  
+
+  
   const calculateProductTotal = (product) => {
     if (product && typeof product.price === 'number' && typeof product.quantity === 'number') {
       return (product.price * product.quantity).toFixed(2);

@@ -121,7 +121,6 @@ const Navbar = () => {
               </ul>
             </div>
             <div className="navbar__icons">
-              <AiOutlineSearch className="search__icon" />
               <div className="navbar__user" id="userIcon">
                 <AiOutlineUser className="search__icon" />
                 <div className="navbar__user__hover">
